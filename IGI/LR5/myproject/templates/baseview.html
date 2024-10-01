@@ -1,0 +1,199 @@
+{% comment %} <html>
+    <head>
+        <title>My Autosalon Website</title>
+    </head>
+    <body>
+        <div class="col-6 text-right">
+          <nav>
+            <ul>
+                <li><a href="{% url 'contacts' %}">Контакты</a></li>
+            </ul>
+            <ul>
+                <li><a href="{% url 'about' %}">О компании</a></li>
+            </ul>
+            <ul>
+                <li><a href="{% url 'policy' %}">Политика конфиденциальности</a></li>
+            </ul>
+            <ul>
+                <li><a href="{% url 'vacancies' %}">Вакансии</a></li>
+            </ul>
+            <ul>
+                <li><a href="{% url 'index' %}">Главная</a></li>
+            </ul>
+            <ul>
+                <li><a href="{% url 'questions' %}">Вопросы и ответы</a></li>
+            </ul>
+            <ul>
+                <li><a href="{% url 'promos' %}">Промокоды и купоны</a></li>
+            </ul>
+            <ul>
+                <li><a href="{% url 'news' %}">Новости</a></li>
+            </ul>
+            <ul>
+                <li><a href="{% url 'feedbacks' %}">Отзывы</a></li>
+            </ul>
+
+        </nav>
+        
+          <h1>Welcome! <span class="icon-emo-happy"></span></h1>
+          </div>
+          {% if user.is_authenticated %}
+            <p class="pt-3">Logged in as <strong>{{ user.username }}</strong>. 
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit">Logout</button>
+                </form>    
+            {% if user.is_admin %}
+                <a href="{% url 'admin_home' %}" class="btn btn-primary" role="button">Admin Home</a>
+            {% elif user.is_customer %}
+                <a href="{% url 'customer_home' %}" class="btn btn-primary" role="button">Customer Home</a>
+            {% elif user.is_employee %}
+                <a href="{% url 'employee_home' %}" class="btn btn-primary" role="button">Employee Home</a>
+            {% endif %}
+          {% else %}
+            <a href="{% url 'login' %}" class="btn btn-light" role="button">Log in</a>
+            <a href="{% url 'signup' %}" class="btn btn-primary" role="button">Sign up</a>
+          {% endif %}
+
+          <div>
+            {% block content %}
+            {% endblock %}
+        </div>
+
+    </body>
+</html> {% endcomment %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lishyk Autosalon - лучшие предложения по покупке автомобилей.">
+    <meta name="keywords" content="автосалон, автомобили, покупка, Lishyk, продажа, машины">
+    <meta name="author" content="Lishyk Autosalon">
+    <link rel="icon" href="{% static 'images/logo.jpg' %}" type="image/x-icon">
+    <title>Автосалон Lishyk - {{ block.title }}</title>
+</head>
+<body>
+    <header style="margin-bottom: 5px;">
+        
+        <table width="100%" bgcolor="grey">
+            <tr>
+                <td width="80" align="left" style="padding-left: 40px;">
+                    <div class="logo">
+                        <img src="{% static 'images/logo.jpg' %}" alt="Lishyk Autosalon Logo" width="60">
+                    </div>
+                </td>
+                <td align="center">
+                    <nav>
+                        <ul style="list-style-type: none; padding: 0; margin: 0;">
+                            <li style="display: inline; margin: 0 15px;">
+                                <a href="{% url 'index' %}" style="text-decoration: none; padding: 10px; background-color: #007bff; color: white; border-radius: 5px;">Главная</a>
+                            </li>
+                            <li style="display: inline; margin: 0 5px;">
+                                <form action="{% url 'about' %}" method="get" style="display:inline;">
+                                    <button type="submit" style="padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">О компании</button>
+                                </form>
+                            </li>
+                            <li style="display: inline; margin: 0 5px;">
+                                <form action="{% url 'vacancies' %}" method="get" style="display:inline;">
+                                    <button type="submit" style="padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">Вакансии</button>
+                                </form>
+                            </li>
+                            <li style="display: inline; margin: 0 5px;">
+                                <form action="{% url 'contacts' %}" method="get" style="display:inline;">
+                                    <button type="submit" style="padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">Контакты</button>
+                                </form>
+                            </li>
+                            <li style="display: inline; margin: 0 5px;">
+                                <form action="{% url 'promos' %}" method="get" style="display:inline;">
+                                    <button type="submit" style="padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">Промокоды</button>
+                                </form>
+                            </li>
+                            <li style="display: inline; margin: 0 5px;">
+                                <form action="{% url 'feedbacks' %}" method="get" style="display:inline;">
+                                    <button type="submit" style="padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">Отзывы</button>
+                                </form>
+                            </li>
+                            <li style="display: inline; margin: 0 5px;">
+                                <form action="{% url 'policy' %}" method="get" style="display:inline;">
+                                    <button type="submit" style="padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">Политика конфиденциальности</button>
+                                </form>
+                            </li>
+                            <li style="display: inline; margin: 0 5px;">
+                                <form action="{% url 'news' %}" method="get" style="display:inline;">
+                                    <button type="submit" style="padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">Новости</button>
+                                </form>
+                            </li>
+                            <li style="display: inline; margin: 0 5px;">
+                                <form action="{% url 'questions' %}" method="get" style="display:inline;">
+                                    <button type="submit" style="padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">Вопросы и ответы</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </nav>
+                </td>
+                <td align="right">
+                    {% if user.is_authenticated %}
+                            <p>
+                                <span style="font-weight: bold;">Logged in as</span>
+                                <strong style="color: #007bff;">{{ user.username }}</strong>
+                            </p> 
+                            <form method="post" action="{% url 'logout' %}" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" style="padding: 5px; background-color: white; color: #007bff; border: none; border-radius: 5px; cursor: pointer;">Logout</button>
+                            </form>
+                            {% if user.is_admin %}
+                                <li style="display: inline; margin: 0 5px;">
+                                    <form action="{% url 'admin_home' %}" method="get" style="display:inline;">
+                                        <button type="submit" style="padding: 5px; background-color: white; color: #007bff; border: none; border-radius: 5px; cursor: pointer;">Admin Home</button>
+                                    </form>
+                                </li>
+                            {% elif user.is_customer %}
+                                <li style="display: inline; margin: 0 5px;">
+                                    <form action="{% url 'customer_home' %}" method="get" style="display:inline;">
+                                        <button type="submit" style="padding: 5px; background-color: white; color: #007bff; border: none; border-radius: 5px; cursor: pointer;">Customer Home</button>
+                                    </form>
+                                </li>
+                            {% elif user.is_employee %}
+                                <li style="display: inline; margin: 0 5px;">
+                                    <form action="{% url 'employee_home' %}" method="get" style="display:inline;">
+                                        <button type="submit" style="padding: 5px; background-color: white; color: #007bff; border: none; border-radius: 5px; cursor: pointer;">Employee Home</button>
+                                    </form>
+                                </li>
+                            {% endif %}
+                        </p>
+                    {% else %}
+                        <form action="{% url 'login' %}" method="get" style="display:inline;">
+                            <button type="submit" style="padding: 5px 10px; background-color: #f8f9fa; color: #007bff; border: 1px solid #007bff; border-radius: 5px; cursor: pointer;">Log in</button>
+                        </form>
+                        <form action="{% url 'signup' %}" method="get" style="display:inline;">
+                            <button type="submit" style="padding: 5px 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">Sign up</button>
+                        </form>
+                    {% endif %}
+                </td>
+            </tr>
+        </table>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock content %}
+    </main>
+
+    <footer>
+        <table width="100%" bgcolor="lightgrey" style="margin-top: 5px;">
+            <tr>
+                <td align="center">
+                    <section class="footer-info">
+                        <p>&copy; 2024 Lishyk Autosalon. Все права защищены.</p>
+                        <p>Адрес: Республика Беларусь, г. Минск, проспект Независимости, XХX, офис 001</p>
+                        <p>Email: info@lishykautosalon.com | Телефон: +375-29-146-45-10</p>
+                    </section>
+                </td>
+            </tr>
+        </table>
+    </footer>
+</body>
+</html>

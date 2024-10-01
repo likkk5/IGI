@@ -1,0 +1,20 @@
+{% extends 'baseview.html' %}
+
+{% block content %}
+<article class="product-detail" style="margin: 20px; padding: 10px; border: 1px solid #ccc; background-color: #f9f9f9; border-radius: 10px;">
+    <header align="center">
+        <h1 style="color: #333;">{{ product.name }}</h1>
+    </header>
+    <figure align="center">
+        <img src="{{ product.photo.url }}" alt="{{ product.name }}" width="300" style="border: 1px solid #ccc; border-radius: 5px;" />
+        <figcaption style="text-align: center; color: #555;">{{ product.description }}</figcaption>
+    </figure>
+    <section style="text-align: center; margin-top: 20px;">
+        <p><strong style="color: #007bff;">Цена:</strong> <span style="color: #000;">{{ product.price }} руб.</span></p>
+        <form action="{% url 'add_to_cart' product.id %}" method="post" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit" style="padding: 10px 15px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">Добавить в корзину</button>
+        </form>
+    </section>
+</article>
+{% endblock %}

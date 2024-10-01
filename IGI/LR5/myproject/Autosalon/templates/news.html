@@ -1,0 +1,25 @@
+{% extends 'baseview.html' %}
+
+{% block content %}
+<table width="100%" cellpadding="10">
+    <tr>
+        <td>
+            <h1 align="center">Новости</h1>
+        </td>
+    </tr>
+</table>
+
+<div class="news-container">
+    {% for actu in news %}
+    <div class="new" style="border: 1px solid #ccc; padding: 15px; margin-bottom: 20px;">
+        <h2 style="color: #0056b3;">{{ actu.title }}</h2>
+        <img src="{{ actu.photo.url }}" alt="{{ actu.short_description }}" width="150" style="float: left; margin-right: 15px;">
+        <p><strong>Кратко:</strong> {{ actu.short_description }}</p>
+        <p>
+            <a href="{% url 'news_detail' actu.id %}" style="background-color: #0056b3; color: white; padding: 10px; text-decoration: none; border-radius: 5px;">Читать далее</a>
+        </p>
+        <div style="clear: both;"></div> 
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

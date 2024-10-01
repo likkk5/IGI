@@ -1,0 +1,35 @@
+{% extends 'baseview.html' %}
+
+{% block content %}
+<main>
+    <section class="contacts-container">
+        <h1>Контакты</h1>
+        
+        <table width="100%" style="border-collapse: separate; border-spacing: 10px;"> 
+            <tr>
+                {% for contact in employees %}
+                <td width="33.33%" style="vertical-align: top; padding: 10px; border: 1px solid #ddd; height: 300px; text-align: center; margin: 10px; background-color: #f0f8ff;"> 
+                    <article class="contact" style="padding: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
+                        <h2 style="margin-bottom: 10px;">{{ contact.user.username }}</h2>
+                        {% if contact.photo %}
+                        <img src="{{ contact.photo.url }}" alt="{{ contact.user.username }}" width="150" height="150" style="margin-bottom: 10px;">
+                        {% else %}
+                        <img src="C:\Users\lishy\pythonvenv\myproject\media\default_photo.png" alt="No photo" width="150" style="margin-bottom: 10px;">
+                        {% endif %}
+                        <p><strong>Телефон:</strong> {{ contact.phone_number }}</p>
+                        <p style="background-color: #cce5ff; border: 1px solid #ccc; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                            <strong>Должность:</strong> {{ contact.position }}
+                        </p>
+                        <p><strong>Почта:</strong> {{ contact.email }}</p>
+                    </article>
+                </td>
+                
+                {% if forloop.counter|divisibleby:3 and not forloop.last %}
+                    </tr><tr> 
+                {% endif %}
+                {% endfor %}
+            </tr>
+        </table>
+    </section>
+</main>
+{% endblock %}

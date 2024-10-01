@@ -1,0 +1,34 @@
+{% extends 'baseview.html' %}
+
+{% block content %}
+<div style="width: 80%; margin: auto; margin-top: 20px; padding: 20px; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
+    <h1 style="text-align: center; color: #333;">Оформление заказа</h1>
+
+    <h2 style="color: #0056b3; border-bottom: 2px solid #0056b3; padding-bottom: 5px;">Ваши товары</h2>
+    <ul style="list-style-type: none; padding-left: 0;">
+        {% for item in cart_items %}
+            <li style="margin-bottom: 15px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9;">
+                <h3 style="color: #333;">{{ item.product.name }}</h3>
+                <p>Цена: <strong style="color: #007bff;">{{ item.product.price }} руб.</strong></p>
+                <p>Количество: <strong>{{ item.quantity }}</strong></p>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <p style="font-size: 1.2em; font-weight: bold;">Общая стоимость: <span style="color: #007bff;">{{ total_price }} руб.</span></p>
+
+    {% if promo_code %}
+        <h3 style="color: #28a745;">Применённый промокод: <strong>{{ promo_code }}</strong></h3>
+        <p>Скидка: <span style="color: #dc3545;">{{ discount }}</span></p>
+        <h3 style="color: #28a745;">Итоговая стоимость с учётом скидки: <strong>{{ discounted_price }} руб.</strong></h3>
+    {% else %}
+        <p style="color: #ff0000;">Промокод не применён.</p>
+    {% endif %}
+
+    <!-- Форма для подтверждения заказа -->
+    <form method="post" style="text-align: center; margin-top: 20px;">
+        {% csrf_token %}
+        <button type="submit" name="confirm_order" style="padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 1em; font-weight: bold">Подтвердить заказ</button>
+    </form>
+</div>
+{% endblock %}
