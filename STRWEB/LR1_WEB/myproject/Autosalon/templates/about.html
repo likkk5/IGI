@@ -1,0 +1,147 @@
+{% extends 'baseview.html' %}
+{% load static %}
+{% block content %}
+<div>
+    {% comment %} <meta http-equiv="Content-Security-Policy" content="frame-src 'self' https://www.youtube.com;"> {% endcomment %}
+    <h2>О компании</h2>
+    
+    <ul>
+        {% for company in company_info %}
+        <li>
+            <h3 id="company-{{ forloop.counter }}" title="Информация о компании {{ company.name }}">{{ company.name }}</h3>
+
+            <table style="width: 100%; margin-bottom: 20px;">
+                <tr>
+                    <td style="width: 50%; vertical-align: top; text-align: center;">
+                        <h4>Логотип</h4>
+                        {% if company.logo %}
+                            <a href="{{ company.website }}" target="_blank" title="Перейти на сайт {{ company.name }}">
+                                <img src="{{ company.logo.url }}" alt="{{ company.name }}" width="500" loading="lazy">
+                                <br>
+                                <img src="{% static 'images/logo1.jpg' %}" alt="Lishyk Autosalon Logo" width="400">
+                            </a>                       
+                        {% else %}
+                            <p>Логотип недоступен.</p>
+                        {% endif %}
+                    </td>                    
+                    <td style="width: 50%; vertical-align: top; text-align: center;">
+                        <h4>Наше Видео</h4>
+                            <video width="560" height="315" controls>
+                                <source src="{{ company.video_file.url }}" type="video/mp4">
+                                Ваш браузер не поддерживает воспроизведение видео.
+                            </video>
+                            <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/cqd4NinFyOk?si=j4J4ibs0G7ykhayv" title="YouTube video player"
+                                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                            </iframe>
+                    </td>
+                    
+                </tr>
+            </table>
+
+            {% if company.history %}
+                <h4>&#10148; История компании</h4>
+                <div>{{ company.history|linebreaks|safe }}</div>
+            {% endif %}
+
+
+            {% comment %} {% if company.details %}
+                <h4>О компании</h4>
+                <p>{{ company.details }}</p>
+            {% endif %} {% endcomment %}
+            {% if company.details %}
+                <h4>&#10148; О компании</h4>
+                <p><strong><dfn>LishykAutosalon</dfn></strong> — это современный автосалон, предлагающий широкий выбор новых и подержанных автомобилей от ведущих мировых производителей.</p>
+
+                <p>Мы специализируемся на продаже:</p>
+                <ul>
+                    <li>легковых автомобилей,</li>
+                    <li>кроссоверов,</li>
+                    <li>внедорожников.</li>
+                </ul>
+
+                <p>Наш автосалон также предоставляет качественное <strong>обслуживание</strong> и <strong>техническую поддержку</strong>, что делает нас надёжным партнёром для наших клиентов.</p>
+                
+                <p><em>Наша миссия</em> — предложить каждому клиенту автомобиль, который <strong>соответствует его предпочтениям и бюджету</strong>.</p>
+
+                <p>Благодаря:</p>
+                <ol>
+                    <li>долгосрочным партнёрствам с известными автопроизводителями,</li>
+                    <li>высококвалифицированным сотрудникам,</li>
+                </ol>
+                <p>мы гарантируем <strong>надёжность</strong> и <strong>безопасность каждой сделки</strong>.</p>
+                <dl>
+                    <p><strong>Термины:</strong></p>
+                    <dt>Автомобиль — </dt>
+                    <dd>Средство передвижения, обычно на четырех колесах, используемое для перевозки людей или грузов.</dd>
+                    
+                    <dt>Гарантия — </dt>
+                    <dd>Обязательство продавца предоставить бесплатный ремонт или замену товара в случае его неисправности в течение установленного срока.</dd>
+                </dl>
+                <dfn title="garant">Гарантия — </dfn> обязательство продавца предоставить бесплатный ремонт или замену товара в случае его неисправности в течение установленного срока.
+
+            {% endif %}
+
+
+
+            {% comment %} {% if company.requisites %}
+                <h4>Реквизиты</h4>
+                <p>{{ company.requisites|linebreaks|safe }}</p>
+            {% endif %} {% endcomment %}
+            {% if company.requisites %}
+                <h4>&#10148; Реквизиты</h4>
+                <p>
+                    <strong>Адрес:</strong> Республика Беларусь, г. Минск, проспект Независимости, XХX, офис 001<br>
+                    <strong>Телефон:</strong> +375 (29) 123-45-67<br>
+                    <strong>Электронная почта:</strong> <a href="mailto:info@lishykautosalon.by">info@lishykautosalon.by</a><br>
+                </p>
+                <p>
+                    <strong>Банковские реквизиты:</strong><br>
+                    Р/с № 30101810400000000225 в Минском филиале ОАО "Беларусбанк"<br>
+                    <strong>БИК:</strong> 1530012<br>
+                    <strong>Корреспондентский счет:</strong> № 30101810400000000225
+                </p>
+            {% endif %}
+
+            {% comment %} {% if company.certificate %}
+                <h4>Сертификат</h4>
+                <p>{{ company.certificate }}</p>
+            {% endif %} {% endcomment %}
+
+            {% if company.certificate %}
+                <h4>&#10148; Сертификат</h4>
+                <p>
+                    <strong>LishykAutosalon</strong> обладает официальным свидетельством, подтверждающим его членство в Ассоциации автосалонов, что гарантирует легальность и надежность нашей деятельности. 
+                    Мы соблюдаем все стандарты и требования, обеспечивая нашим клиентам высокое качество обслуживания и безопасность сделок.
+                </p>
+
+                <h5>Свидетельство о регистрации</h5>
+                <p>
+                    <strong>ООО "LishykAutosalon"</strong><br>
+                    <strong>Регистрационный номер:</strong> 8241<br>
+                    <strong>Дата выдачи:</strong> 17 марта 2017 года<br>
+                    <strong>Выдано:</strong> Ассоциацией автосалонов "АВТОМОЩЬ"<br>
+                    <strong>Директор Ассоциации:</strong> И.В. Смирнов
+                </p>
+            {% endif %}
+
+
+            <h4>&#10148; Баннеры</h4>
+            <table style="width: 100%;" role="presentation">
+                <tr>
+                    {% for banner in company.banners.all %}
+                    <td style="width: 20%; text-align: center;">
+                        <a href="{{ banner.url }}" target="_blank" title="Перейти к баннеру {{ company.name }}">
+                            <img src="{{ banner.image.url }}" alt="{{ company.name }} Banner" width="100%" loading="lazy">
+                        </a>
+                    </td>
+                    {% empty %}
+                    <p><small>Нет доступных баннеров.</small></p>
+                    {% endfor %}
+                </tr>
+            </table>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

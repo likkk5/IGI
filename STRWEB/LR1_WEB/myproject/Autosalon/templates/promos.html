@@ -1,0 +1,33 @@
+{% extends 'baseview.html' %}
+
+{% block content %}
+<div class="promocodes-container" style="width: 80%; margin: auto; margin-top: 5px; padding: 20px; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
+    <h1 style="text-align: center; color: #333;">Промокоды</h1>
+    
+    <h2 style="color: #0056b3; border-bottom: 2px solid #0056b3; padding-bottom: 5px;">Активные промокоды</h2>
+    {% if active_promo_codes %}
+        <ul style="list-style-type: none; padding-left: 0;">
+            {% for promo_code in active_promo_codes %}
+                <li style="margin-bottom: 10px; padding: 10px; border: 1px solid #0056b3; border-radius: 5px; background-color: #e9f7ff;">
+                    <strong style="color: #0056b3;">{{ promo_code.code }}</strong>: {{ promo_code.description }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p style="color: #ff0000;">Нет активных промокодов.</p>
+    {% endif %}
+
+    <h2 style="color: #0056b3; border-bottom: 2px solid #0056b3; padding-bottom: 5px;">Архивные промокоды</h2>
+    {% if archived_promo_codes %}
+        <ul style="list-style-type: none; padding-left: 0;">
+            {% for promo_code in archived_promo_codes %}
+                <li style="margin-bottom: 10px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9;">
+                    <strong style="color: #999;">{{ promo_code.code }}</strong>: {{ promo_code.description }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p style="color: #ff0000;">Нет архивных промокодов.</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'baseview.html' %}
+
+{% block content %}
+<div class="questions-container" style="max-width: 800px; margin: auto;">
+    <h1 style="text-align: center;">Вопросы и ответы</h1>
+    
+    {% for question in questions %}
+    <div class="question" style="margin-bottom: 20px;">
+        <details open>
+            <summary>
+                {{ question.question }}
+            </summary>
+            <div class="answer" style="margin-top: 10px;">
+                <p><strong>Ответ:</strong> {{ question.answer }}</p>
+                <p>
+                    <strong>Дата:</strong> 
+                    <time datetime="{{ question.date_posted|date:'Y-m-d H:i:s' }}">
+                        {{ question.date_posted|date:"d F Y, H:i" }}
+                    </time>
+                </p>                
+            </div>
+        </details>
+        <hr style="border: 1px solid #ccc; margin-top: 10px;">
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
+
+{% comment %} style="display: flex; align-items: center; cursor: pointer; font-size: 1.2em; font-weight: bold;" {% endcomment %}

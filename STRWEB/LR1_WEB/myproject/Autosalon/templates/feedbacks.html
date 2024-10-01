@@ -1,0 +1,37 @@
+{% extends 'baseview.html' %}
+
+{% block content %}
+<main>
+    <section class="feedbacks-container">
+        <h1>Отзывы</h1>
+        <p>
+            <a href="{% url 'leave_feedback' %}" style="text-decoration: none;">
+                <button type="button" style="padding: 10px 15px; font-size: 16px; border: none; border-radius: 5px; background-color: #0056b3; color: white; cursor: pointer;">
+                    Оставить отзыв
+                </button>
+            </a>
+        </p>
+        {% if feedbacks %}
+            <article>
+                <h2>Список отзывов</h2>
+                <table width="100%">
+                    {% for feedback in feedbacks %}
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 10px; vertical-align: top;">
+                            <h3>{{ feedback.author.username }}</h3>
+                            <p><strong>Отзыв:</strong> {{ feedback.note }}</p>
+                            <p>{{ feedback.text }}</p>
+                            <p><small>Дата: {{ feedback.date }}</small></p>
+                            <p><a href="{% url 'edit_feedback' feedback.id %}">Редактировать</a></p>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </article>
+        {% else %}
+            <p>Нет отзывов.</p>
+        {% endif %}
+        
+    </section>
+</main>
+{% endblock %}

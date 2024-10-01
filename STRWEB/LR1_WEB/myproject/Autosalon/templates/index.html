@@ -1,0 +1,306 @@
+{% extends 'baseview.html' %}
+{% load static %}
+
+{% block content %}
+<div>
+
+     <!-- Hero Section -->
+     <table style="width: 100%; height: 40vh; border-collapse: collapse; margin-top: 5px;">
+        <tr>
+            <td style="text-align: center; vertical-align: middle; background-color: lightblue;">
+                <header id="hero-section" title="Добро пожаловать в Lishyk Autosalon" role="banner" aria-label="Главный раздел">
+                    <h1>
+                        Добро пожаловать в 
+                        <a href="#banners-logos-section" title="Перейти к логотипам и баннерам">
+                            <mark>Lishyk Autosalon</mark>
+                        </a>
+                    </h1>
+                    <p><strong>Широкий выбор автомобилей</strong> по лучшим ценам и условиям!</p>
+                    {% comment %} <a href="{% url 'view_catalog' %}" title="Посмотреть каталог" role="button" accesskey="k">Посмотреть каталог</a> {% endcomment %}
+                    <form action="{% url 'view_catalog' %}">
+                        <button type="submit" title="Посмотреть каталог" style="padding: 10px; border: 1px solid blue; background-color: white; color: blue;">Посмотреть каталог</button>
+                    </form>
+                    <!-- Цитата -->
+                    <section id="quote-section" style="margin-top: 20px; text-align: right; font-style: italic; color: #555;">
+                        <blockquote>
+                            <q cite="https://ru.citaty.net/tsitaty/472075-entso-ferrari-edinstvennye-moi-druzia-kotorym-ia-veriu-do-kontsa/">
+                                Единственные мои друзья, которым я верю до конца, — это автомобили.
+                            </q>
+                            <footer>— Энцо Феррари</footer>
+                        </blockquote>
+                    </section>
+                </header>
+            </td>
+        </tr>
+    </table>
+
+
+    <!-- Последние новости -->
+    <section id="latest-news-section" aria-labelledby="latest-news-title" lang="ru" style="margin-top: 20px;">
+        <h2 id="latest-news-title">Последние новости</h2>
+
+        <table role="presentation" width="100%">
+            <tr>
+                <!-- Колонка с изображением -->
+                <td width="20%" valign="top">
+                    <img src="{{ latest_news.photo.url }}" alt="{{ latest_news.title }}" width="200" title="{{ latest_news.title }}" loading="lazy">
+                </td>
+
+                <!-- Колонка с текстом -->
+                <td width="40%" valign="top">
+                    <h3><em>{{ latest_news.title }}</em></h3>
+                    <p>{{ latest_news.short_description }}</p>
+                    <a href="{% url 'news_detail' latest_news.id %}" title="Читать далее о {{ latest_news.title }}">Читать далее</a>
+                </td>
+                <td width="20%" valign="top">
+                    <aside style="margin-top: 20px; font-style: italic;">
+                        <blockquote>
+                            <p>Легковой автомобиль <br>
+                            По дороге мчится. <br>
+                            А за ним густая пыль <br>
+                            Тучею клубится.</p>
+                        </blockquote>
+                    </aside>
+                </td>
+                <!-- Потенциальный перевод строки-->
+                <td width="20%" valign="top">
+                    <blockquote style="margin-top: 20px; font-style: italic;">
+                        <p>
+                            Хёндай Акцент –<wbr> Прекрасная машина.<wbr> Ей в мире равных нет.<wbr> Как Р'eмбрандта картина
+                        </p>
+                    </blockquote>
+                </td>
+                {% comment %} <td width="20%" valign="top">
+                    <blockquote style="margin-top: 20px; font-style: italic;">
+                        <p style="white-space: pre-line;">
+                            Хёндай Акцент –<wbr> Прекрасная машина.<wbr>
+                            Ей в мире равных нет.<wbr> 
+                            Как Р'eмбрандта картина
+                        </p>
+                    </blockquote>
+                </td> {% endcomment %}
+            </tr>
+        </table>
+    </section>
+    <audio controls>
+        <source src="{% static 'audio/episode_content.mp3' %}" type="audio/mpeg">
+        Ваш браузер не поддерживает воспроизведение аудио.
+    </audio>
+    
+
+    <!-- Раздел с логотипами компаний и баннерами -->
+    <section aria-labelledby="banners-logos-section" style="margin-top: 20px;">
+        <table width="100%">
+            <tr>
+                <td align="center">
+                    <hr style="border: none; border-top: 1px solid black; margin: 0;"> 
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <h2 id="banners-logos-section"><strong>Главная страница</strong></h2> 
+            </tr>
+            <tr>
+                <td align="center">
+                    <hr style="border: none; border-top: 1px solid black; margin: 0;"> 
+                </td>
+            </tr>
+        </table>        
+    
+        <table role="presentation" width="100%">
+            <tr>
+                <!-- Колонка с логотипами компаний -->
+                <td width="50%" valign="top">
+                    <section id="company-logos" aria-labelledby="company-logos-title">
+                        <h2 id="company-logos-title">Логотип компании</h2>
+                        <ul>
+                        {% for company in company_info %}
+                            <a href="{{ company.website }}" target="_blank" title="Перейти на сайт {{ company.name }}" rel="noopener noreferrer">
+                                <abbr title="Логотип компании {{ company.name }}">
+                                    <img src="{{ company.logo.url }}" alt="{{ company.name }} Логотип" style="width: 100%; height: auto; max-width: 350px;" loading="lazy">
+                                </abbr>
+                            </a>
+                        {% endfor %}
+                        </ul>
+                    </section>
+                </td>
+                
+                <!-- Колонка с баннерами компаний -->
+                <td width="50%" valign="top">
+                    <section id="company-banners" aria-labelledby="company-banners-title">
+                        <h2 id="company-banners-title">Баннер компании</h2>
+                        <div>
+                            <table role="presentation">
+                                <tr>
+                                {% for company in company_info %}
+                                    <td>
+                                        <div>
+                                        {% for banner in company.banners.all %}
+                                        <a href="{% url 'about' %}" target="_blank" title="Перейти к баннеру {{ company.name }}" rel="noopener noreferrer">
+                                            <img src="{{ banner.image.url }}" alt="{{ company.name }} Баннер" width="350" loading="lazy">
+                                        </a>
+                                        {% empty %}
+                                            <p><small>Нет доступных баннеров.</small></p>
+                                        {% endfor %}
+                                        </div>
+                                    </td>
+                                {% endfor %}
+                                </tr>
+                            </table>
+                        </div>
+                    </section>
+                </td>
+            </tr>
+        </table>
+    </section>
+    
+
+    <!-- Каталог автомобилей -->
+    <section itemscope id="catalog-section" aria-labelledby="catalog-title" style="margin-top: 20px;">
+        <h2 id="catalog-title">Каталог автомобилей</h2>
+        <table role="presentation" width="100%">
+            <tr>
+            {% for product in products %}
+                <td align="center">
+                    <a href="{% url 'product_detail' product.id %}" title="Просмотреть детали {{ product.name }}" aria-label="Детали {{ product.name }}">
+                        <img src="{{ product.photo.url }}" alt="{{ product.name }}" width="400" height="300" loading="lazy">
+                        <p><b>{{ product.name }}</b></p>
+                        <p>{{ product.price }} руб.</p>
+                    </a>
+                </td>
+                {% if forloop.counter|divisibleby:"3" %} </tr><tr> {% endif %}
+            {% endfor %}
+            </tr>
+        </table>
+    </section>
+
+    <!--Выпадающий список-->
+    <aside id="download-section" aria-labelledby="download-title" style="margin-top: 10px; text-align: left;">
+        <h4>Дополнительная литература <small>(можно не читать)</small></h4>
+        
+        <form action="" method="get">
+            <label for="literature-select">Выберите литературу:</label>
+            <select id="literature-select" name="literature" required style="margin-bottom: 10px;">  <!-- не сможет отправить форму, пока не выберет опцию из выпадающего списка. -->
+                <option value="" disabled selected>Выберите документ</option> <!-- Предотвращает пустой выбор -->
+                <option value="The 2000-2005 World Outlook for Passenger Car Tyres (Strategic Planning Series).pdf" {% if request.GET.literature == 'The 2000-2005 World Outlook for Passenger Car Tyres (Strategic Planning Series).pdf' %}selected{% endif %}>
+                    📄 The 2000-2005 World Outlook for Passenger Car Tyres
+                </option>
+                <option value="Free-Car-Mag-112.pdf" {% if request.GET.literature == 'Free-Car-Mag-112.pdf' %}selected{% endif %}>
+                    📄 Free Car Mag 112
+                </option>
+                <option value="dkp.pdf" {% if request.GET.literature == 'dkp.pdf' %}selected{% endif %}>
+                    📄 Бланк договора
+                </option>
+            </select>
+            <br>
+            <button type="submit" style="background-color: #0056b3; color: white; padding: 10px; text-decoration: none; border-radius: 5px;">Скачать выбранный документ</button>
+        </form>        
+    
+        {% if request.GET.literature %}
+            <a href="{% static 'documents/' %}{{ request.GET.literature }}" download style="background-color: #0056b3; color: white; padding: 10px; text-decoration: none; border-radius: 5px;">
+                Скачать выбранный документ
+            </a>
+        {% endif %}
+    </aside> 
+
+    <section id="image-section" style="width:100%">
+        <picture>
+            <!-- Для экранов шириной до 700px, при ширине до 500px загружаем изображения шириной 50vw, при более широкой ширине — 10vw -->
+            <source media="(max-width: 700px)" 
+                    sizes="(max-width: 500px) 50vw, 10vw"
+                    srcset="{% static 'images/loadingnarrow.jpg' %} 138w, 
+                            {% static 'images/loadingnarrowhd.jpg' %} 138w"
+                    title="Низкое разрешение изображения для экранов до 700px">
+            
+            <!-- Для экранов шириной до 1400px, при ширине до 1000px загружаем изображения шириной 100vw, при более широкой ширине — 50vw -->
+            <source media="(max-width: 1400px)" 
+                    sizes="(max-width: 1000px) 100vw, 50vw"
+                    srcset="{% static 'images/loadingfigure.jpg' %} 416w, 
+                            {% static 'images/loadingfigurehd.jpg' %} 416w"
+                    title="Изображение для экранов до 1400px">
+        
+            <!-- Запасное изображение для всех остальных случаев -->
+            <img src="{% static 'images/loading.jpg' %}" 
+                 alt="adaptive picture"
+                 title="Основное изображение для остальных экранов">
+        </picture>
+    </section> 
+
+    <!--Листинг-->
+    <p>
+    <code>
+      var cars = ["Audi", "BMW", "Ford", "Volkswagen"];<br>
+      document.writeln("I like " + cars.length + " cars");
+    </code>
+    </p>
+    <p>The variable in this example is <var>cars</var></p>
+    <p>The output from the code is: <samp>I like 4 cars</samp></p>
+    <p>When prompted for my favorite car, I typed: <kbd>Ford</kbd></p>
+
+    <!--Микроданные-->
+    <div itemscope itemtype="http://schema.org/AutoSalon">
+        <div itemprop="name">Ford Mustang</div>
+        <span itemprop="description">Мощный и стильный спортивный автомобиль с двигателем V8 и агрессивным дизайном.</span> 
+        Автомобиль доступен с 
+        <time itemprop="releaseDate" datetime="2024-03-15">15 марта 2024 года</time>.
+    </div>
+
+    <!--Контейнер span-->
+    <p>
+        <span class="letter">А</span>втомобили — это не просто транспортные средства; это выражение свободы и стиля. 
+        Каждый автомобиль рассказывает свою уникальную историю и связывает владельца с миром. 
+        Вот почему выбор автомобиля — это важное решение, которое отражает вашу личность и образ жизни.
+    </p>
+    <p>Джон Дойл</p>
+
+    <!--Радио кнопки и чекбоксы-->
+    <form action="{% url 'index' %}" method="post">
+        {% csrf_token %}
+
+        <fieldset> <!--Группировка элементов в форме-->
+          <legend>Выберите дополнительные услуги в автомобиле:</legend>
+      
+          <input type="radio" name="extra_service" value="gps" id="gps">
+          <label for="gps">GPS-навигация</label><br>
+      
+          <input type="radio" name="extra_service" value="heated_seats" id="heated_seats">
+          <label for="heated_seats">Подогрев сидений</label><br>
+      
+          <input type="radio" name="extra_service" value="premium_sound" id="premium_sound">
+          <label for="premium_sound">Премиум звуковая система</label><br>
+
+          <input type="radio" name="extra_service" value="leather_seats" id="leather_seats">
+          <label for="leather_seats">Кожаные сиденья</label>
+
+        </fieldset>
+        <br>
+
+        <fieldset>
+          <legend>Выберите дополнительные услуги в автосалоне:</legend>
+      
+          <input type="checkbox" name="extras" value="insurance" id="insurance">
+          <label for="insurance">Страхование</label><br>
+      
+          <input type="checkbox" name="extras" value="warranty" id="warranty">
+          <label for="warranty">Гарантия на 2 года</label><br>
+      
+          <input type="checkbox" name="extras" value="tinting" id="tinting">
+          <label for="tinting">Тонировка окон</label>
+        </fieldset>
+        <br>
+      
+        <input type="submit" value="Отправить">
+        <input type="reset" value="Сбросить">
+    </form>
+    {% comment %} <form action="" method="post">
+        Login:
+        <input type="text" name="login" size="10" autocomplete="on">
+        <br>
+        Password:
+        <input type="password" name="pass" maxlength="8">
+        <br><br>
+        <input type="submit" value="Log in">
+    </form> {% endcomment %}
+     
+</div>
+{% endblock %}
