@@ -1,0 +1,415 @@
+#catalog-title,#partners-logos-banners, #latest-news-title {
+    color: #0056b3; /* Задаем цвет текста для всех заголовков */
+}
+
+/* body{
+    background: linear-gradient(to bottom, #b3e0f2, #87ceeb, #4682b4, #1e90ff);
+} */
+/* Устанавливаем стиль для градиентного фона */
+.gradient-background {
+    margin-top: 20px;
+    background: linear-gradient(to bottom, #b3e0f2, #87ceeb, #4682b4, #1e90ff);
+    max-width: 1500px; /* Максимальная ширина контейнера */
+    margin: 5px auto; /* Центрирование контейнера */
+    padding: 5px; /* Отступы вокруг контейнера */
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: -2;
+}
+/* Hero Section */
+#hero-section {
+    background-image: url('/static/images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    text-align: center;
+    position: relative;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+#hero-section a:hover {
+    text-decoration: none; /* Также убираем подчеркивание при наведении */
+    color:  #FFD700;
+    text-shadow: 0 0 10px rgba(255, 99, 71, 0.8); /* Тень текста при наведении */
+}
+/* Стили для заголовка h1 */
+#hero-section h1 {
+    font-size: 4em; /* Размер шрифта */
+    font-weight: bold; /* Жирный текст */
+    color: #ffffff; /* Цвет текста */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Тень текста для контраста */
+    margin: 0; /* Убираем отступы */
+    margin-bottom: 5px;
+    line-height: 1.2; /* Интерлиньяж для лучшего восприятия */
+}
+/* Изменение стиля при выделении текста */
+#hero-section h1::selection {
+    background-color: #ffd700; /* Золотой фон для выделенного текста */
+    color: #000000; /* Черный текст при выделении */
+    font-family: 'Courier New', Courier, monospace;
+}
+/* Стили для ссылки внутри h1 */
+#hero-section a {
+    text-decoration: none; /* Убираем подчеркивание */
+    color: inherit; /* Цвет ссылки (золотистый) */
+    font-weight: bold; /* Жирный текст для ссылки */
+    transition: color 0.3s ease, text-shadow 0.3s ease; /* Плавный переход цвета и тени при наведении */
+}
+
+.hero-content p {
+    font-size: 1.5em; /* Размер шрифта */
+    color: #164274; /* Цвет текста для параграфа */
+    margin-top: 5px;
+    margin-bottom: 20px; /* Отступ снизу */
+    max-width: 800px; /* Ограничиваем ширину */
+    margin-left: auto; /* Центрируем текст */
+    margin-right: auto; /* Центрируем текст */
+}
+
+.hero-content button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.hero-content button:hover {
+    background-color: #0056b3;
+}
+
+/* Цитата */
+#quote-section {
+    position: absolute;
+    bottom: 20px;
+    right: 20px; 
+    font-style: italic;
+    color: #f0f0f0;
+    text-align: right;
+}
+
+#quote-section blockquote {
+    margin: 0;
+    padding: 10px;
+    font-size: 1.2em;
+}
+
+#quote-section footer {
+    margin-top: 10px;
+    color: #ddd;
+    font-size: 1.0em;
+}
+
+/* mark {
+    background-color: transparent;
+    color: yellow;
+    font-weight: bold;
+} */
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2em;
+    }
+
+    .hero-content p {
+        font-size: 1.2em;
+    }
+}
+
+/* Стили для последней новости */
+.latest-news-container {
+    display: flex; /* Используем flexbox для размещения элементов */
+    justify-content: space-between; /* Распределяем элементы по ширине */
+    align-items: center; /* Выравниваем по центру краю */
+    margin-top: 20px; /* Отступ сверху */
+    position: relative; /* Задаем относительное позиционирование для контейнера */
+    border-radius: 15px; /* Скругление углов контейнера */
+    overflow: hidden; /* Скрываем части элементов, выходящие за границы контейнера */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Легкая тень для эффекта */
+    padding: 15px;
+}
+
+.news-image {
+    flex: 1; /* Занимает 1 часть из 3 */
+    max-width: 250px; /* Ограничиваем ширину изображения */
+    margin-right: 10px;
+}
+.news-image img {
+    width: 100%; /* Изображение занимает всю ширину контейнера */
+    height: auto; /* Сохраняем пропорции изображения */
+    border-radius: 15px;
+}
+.news-text {
+    flex: 2; /* Занимает 2 части из 3 */
+    padding: 10px; /* Отступы для текста */
+    background-color: #c8e1fd; 
+    margin-right: 10px; /* Отступ справа от текста */
+    border-radius: 5px;
+}
+
+.news-text h3 {
+    font-size: 1.5em; /* Увеличиваем размер заголовка */
+    margin: 0; /* Убираем отступы */
+    color: #333;
+}
+
+.news-text p {
+    margin: 10px 0; /* Отступы для параграфа */
+    color: #555;
+}
+.news-text .read-more {
+    display: inline-block; /* Превращаем ссылку в блочный элемент */
+    margin-top: 10px; /* Отступ сверху */
+    padding: 10px 15px; /* Отступы внутри кнопки */
+    background-color: #007bff; /* Фон для кнопки */
+    color: white; /* Цвет текста */
+    text-decoration: none; /* Убираем подчеркивание */
+    border-radius: 5px; /* Скругление углов кнопки */
+    transition: background-color 0.3s; /* Плавный переход при наведении */
+}
+
+.news-text .read-more:hover {
+    background-color: #0056b3; /* Более темный цвет при наведении */
+}
+.news-quote {
+    flex: 1; /* Занимает 1 часть из 3 */
+    margin-top: 20px; /* Отступ сверху */
+    font-style: italic; /* Курсив для цитат */
+    font-size: 14px;    
+}
+
+.news-quote blockquote {
+    margin-left: 0px; /* Убираем отступы для цитат */
+    border-left: 4px solid #0056b3; /* Граница слева для выделения */
+
+}
+/* .news-quote blockquote {
+    font-size: 18px;
+    color: #555;
+    margin: 20px 0;
+    padding: 10px 15px;
+    border-left: 4px solid #0056b3;
+} */
+.news-quote p {
+    margin-left: 0px; /* Убираем отступы для текста в цитате */
+    padding-left: 10px;
+}
+/* Кавычки для английских цитат */
+blockquote[lang="en"] {
+    quotes: "“" "”" "‘" "’"; /* Определяем кавычки */
+}
+
+/* Кавычки для русских цитат */
+blockquote[lang="ru"] {
+    quotes: "«" "»" "„" "“"; /* Определяем кавычки */
+}
+
+/* Псевдоэлементы для отображения кавычек */
+.news-quote p::before {
+    content: open-quote; /* Открывающая кавычка */
+    font-size: 15px; /* Размер кавычки */
+    margin-right: 2px; /* Отступ справа */
+}
+
+.news-quote p::after {
+    content: close-quote; /* Закрывающая кавычка */
+    font-size: 15px; /* Размер кавычки */
+    margin-left: 2px; /* Отступ слева */
+}
+/* Аудиоплеер */
+.audio-container {
+    margin-top: 20px; /* Отступ сверху */
+    text-align: right; /* Выравнивание по правому краю */
+}
+
+.audio-container audio {
+    width: 200px; /* Ограничиваем ширину аудиоплеера */
+}
+
+/* Основной контейнер для партнеров, логотипов и баннеров */
+.partners-logos-banners-container {
+    display: flex; /* Используем flexbox для расположения колонок в ряд */
+    justify-content: space-between; /* Равномерное распределение колонок */
+    margin-top: 20px; /* Отступ сверху */
+    gap: 40px; /* Отступ между колонками */
+}
+
+/* Колонки занимают равное пространство */
+.partners-column, .logos-column, .banners-column {
+    flex: 1; /* Каждая колонка занимает равное пространство */
+    padding: 0 20px; /* Отступ внутри колонок */
+}
+
+/* Стили для секции партнеров */
+.partners-container {
+    display: flex;
+    flex-direction: column; /* Вертикальное расположение партнеров */
+    align-items: center; /* Центрирование элементов по горизонтали */
+}
+
+.partner-item {
+    width: 350px; /* Ширина блока с логотипом партнера */
+    height: 220px; /* Высота блока с логотипом партнера */
+    background-color: #f0f0f0; /* Цвет фона блока */
+    border-radius: 50%; /* Делает блоки круглыми */
+    margin: 20px 0; /* Отступы между блоками */
+    display: flex; /* Используем flexbox для внутреннего содержимого */
+    flex-direction: column; /* Располагаем содержимое вертикально */
+    align-items: center; /* Центрируем содержимое по горизонтали */
+    justify-content: center; /* Центрируем содержимое по вертикали */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Тень для блока */
+    transition: transform 0.2s; /* Плавный переход для эффекта при наведении */
+}
+
+.partner-item:hover {
+    transform: scale(1.05); /* Увеличиваем блок при наведении */
+}
+
+.partner-item img {
+    border-radius: 50%; /* Скругляем изображения */
+    width: 95%; /* Логотип заполняет весь блок */
+    height: 80%;
+    object-fit: cover; /* Логотип заполняет блок с сохранением пропорций */
+}
+
+.partner-name {
+    font-size: 1.2em; /* Размер шрифта */
+    font-family: 'Italic', sans-serif; /* Шрифт */
+    letter-spacing: 1px; 
+    font-kerning: auto; /* Кернинг для шрифта */
+    color: #333; /* Цвет текста */
+    text-align: center; /* Центрируем текст */
+    margin-top: 5px; /* Отступ сверху от логотипа до названия */
+}
+/* Убираем подчеркивание у ссылок */
+.partner-item a {
+    text-decoration: none; /* Убираем подчеркивание у ссылок */
+    color: inherit;
+}
+/* Стили для логотипов компаний */
+.logos-column ul {
+    list-style: none; /* Убираем маркеры списка */
+    padding: 0; /* Убираем отступы списка */
+    display: flex; /* Flexbox для логотипов */
+    flex-direction: column; /* Логотипы располагаются вертикально */
+    align-items: center; /* Центрируем логотипы */
+}
+
+.logos-column li {
+    margin: 10px 0; /* Отступы между логотипами */
+}
+
+.logos-column img {
+    max-width: 100%; /* Максимальная ширина логотипа */
+    height: auto; /* Сохраняем пропорции */
+    max-width: 410px; /* Ограничиваем максимальную ширину */
+    border-radius: 10px;
+}
+
+/* Стили для баннеров компаний */
+.banners-grid {
+    display: flex; /* Flexbox для баннеров */
+    flex-direction: column; /* Баннеры располагаются вертикально */
+    align-items: center; /* Центрируем баннеры */
+    gap: 20px; /* Отступы между баннерами */
+}
+
+.banner-item img {
+    max-width: 100%; /* Ограничиваем ширину */
+    height: auto; /* Сохраняем пропорции */
+    border-radius: 10px; /* Скругление углов */
+    object-fit: cover; /* Обрезаем изображение, сохраняя пропорции */
+    max-height: 300px; /* Ограничиваем высоту баннера */
+}
+
+/* Основные стили для каталога */
+.catalog-container {
+    display: flex; /* Используем flexbox для расположения элементов в ряд */
+    overflow-x: auto; /* Включаем горизонтальную прокрутку */
+    scroll-snap-type: x mandatory; /* Добавляем эффект прокрутки */
+    padding: 10px 0; /* Отступы сверху и снизу */
+    margin-top: 10px; /* Отступ сверху */
+}
+.catalog-container::-webkit-scrollbar {
+    display: none; /* Скрыть полосу прокрутки */
+}
+/* Стили для элементов продуктов */
+.product-item {
+    position: relative; /* Для отображения текста поверх картинки */
+    flex: 0 0 auto; /* Не позволяет элементам сжиматься или растягиваться */
+    width: 500px; /* Ширина каждого элемента продукта */
+    margin-right: 15px; /* Отступы между элементами */
+    text-align: center; /* Центрируем текст */
+    scroll-snap-align: start; /* Элемент будет прилипать к началу контейнера при прокрутке */
+    border: 1px solid #ddd; /* Добавляем рамку для бокса */
+    border-radius: 10px; /* Скругление углов для бокса */
+    overflow: hidden; /* Скрываем часть, выходящую за пределы рамки */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для бокса */
+    transition: transform 0.3s ease; /* Переход для эффекта при наведении */
+}
+/* Стили для текста названия и цены */
+.product-item p {
+    margin: 5px 0; /* Уменьшаем отступы для элементов p */
+}
+
+/* Стили для цены */
+.product-price {
+    display: block; /* Чтобы цена занимала отдельную строку */
+    font-size: 1em; /* Размер шрифта для цены */
+    color: #333; /* Цвет для текста цены */
+    margin-top: 5px; /* Уменьшаем отступ сверху, если нужно */
+}
+.product-item img {
+    width: 100%; /* Устанавливаем ширину изображения на 100% */
+    height: 300px; /* Задаем фиксированную высоту для изображений */
+    object-fit: cover; /* Обрезаем изображение, сохраняя пропорции */
+    border-radius: 10px; /* Скругление углов для изображений */
+    transition: filter 0.3s ease-in-out; /* Переход для изменения яркости */
+}
+
+/* Эффект при наведении: изображение светлеет */
+.product-item:hover img {
+    filter: brightness(1.3); /* Увеличиваем яркость при наведении */
+}
+
+/* Убираем подчеркивание у ссылок */
+.product-item a {
+    text-decoration: none; /* Убираем подчеркивание у ссылок */
+    color: inherit;
+}
+/* Стили для текста "Подробней" */
+.product-name {
+    position: absolute; /* Абсолютное позиционирование для текста */
+    top: 0; /* Начало блока вверху изображения */
+    left: 0; /* Начало блока слева */
+    right: 0; /* Конец блока справа */
+    bottom: 0; /* Конец блока снизу */
+    background-color: rgba(0, 0, 0, 0.7); /* Полупрозрачный черный фон */
+    color: #007bff;
+    font-size: 1.5em; /* Увеличиваем размер шрифта */
+    display: flex; /* Используем flexbox для центрирования текста */
+    justify-content: center; /* Центрируем по горизонтали */
+    align-items: center; /* Центрируем по вертикали */
+    opacity: 0; /* Изначально текст невиден */
+    transition: opacity 0.3s ease-in-out; /* Переход для плавного появления */
+    border-radius: 10px; /* Скругление углов для фона текста */
+}
+
+/* Появление текста при наведении */
+.product-item:hover .product-name {
+    opacity: 1; /* Показываем текст при наведении */
+}
+
+/* Стили для заголовка */
+#catalog-title {
+    text-align: center; /* Центрируем заголовок */
+    margin-bottom: 15px; /* Отступ снизу */
+}

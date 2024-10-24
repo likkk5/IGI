@@ -1,0 +1,161 @@
+body {
+    background-color: #f4f4f4; /* Фоновый цвет для страницы */
+}
+.vacancies-page-box {
+    max-width: 1350px; /* Максимальная ширина контейнера */
+    margin: 20px auto; /* Центрирование контейнера */
+    padding: 20px; /* Отступы вокруг контейнера */
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);/*x y радиус размытия растяжение цвет*/
+}
+
+.vacancies-container {
+    width: 100%;
+    max-width: 1460px; /* Максимальная ширина контейнера */
+    margin: 0 auto; /* Центрирование контейнера */
+    padding: 20px; /* Отступы внутри контейнера */
+}
+
+.vacancies-container h1 {
+    font-size: 28px;
+    color: #0056b3;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Макет для списка вакансий с использованием float */
+.vacancy-item {
+    float: left; /* Плавающий блок влево */
+    width: calc(33.33% - 20px); /* Задаем ширину элементов (33.33% с учетом отступов) */
+    margin: 10px; /* Отступ между элементами */
+    border: 1px solid #ddd; /* Рамка */
+    box-sizing: border-box; /* Включаем внутренние отступы в размер */
+    background-color: #f0f8ff; /* Фоновый цвет */
+    padding: 10px; /* Внутренние отступы */
+    border-radius: 5px; /* Закругленные углы */
+    height: 405px; /* Фиксированная высота блока вакансии */
+    line-height: 1.2; /* Межстрочный интервал */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Плавная анимация увеличения и тени.property duration timing-function(easy default) delay */
+}
+
+.vacancy-item:hover {
+    transform: scale(1.05); /* Увеличение блока при наведении */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Добавление тени при наведении */
+}
+
+.vacancy-item h2 {
+    margin-bottom: 5px; /* Отступ снизу заголовка вакансии */
+}
+
+.vacancy-item p {
+    margin-bottom: 2px; /* отступ между абзацами */
+}
+
+.requirements {
+    border: 2px solid #ccc; /* Рамка для требований */
+    padding: 10px; /* Внутренние отступы */
+    background-color: #f9f9f9; /* Фоновый цвет */
+    border-radius: 5px; /* Закругленные углы */
+    margin-top: 10px; /* Уменьшаем отступ сверху */
+}
+
+/* Очищаем обтекание после плавающих блоков */
+.clear {
+    clear: both;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .vacancy-item {
+        width: calc(50% - 20px); /* Две вакансии в строке на планшетах. от 50% родительского контейнера отнимаем 20px */
+    }
+}
+
+@media (max-width: 480px) {
+    .vacancy-item {
+        width: 100%; /* Одна вакансия в строке на мобильных устройствах */
+        margin: 10px 0; /* Отступы сверху и снизу */
+    }
+}
+/* Стили заголовка таблицы */
+.table-heading {
+    text-align: center;
+    font-size: 24px;
+    margin-top: 20px;
+    color: #333;
+}
+
+/* Основные стили для таблицы */
+.styled-table {
+    width: 90%; /* Размер таблицы */
+    border-collapse: collapse; /* Убираем двойные линии между ячейками */
+    margin: 25px auto; /* Внешние отступы */
+    font-size: 16px;
+    font-family: 'Times New Roman', sans-serif;
+    text-align: left;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Тень */
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Заголовок таблицы (thead) */
+.styled-table thead tr {
+    background-color: rgb(23, 96, 96);
+    color: #ffffff; 
+    text-align: center; /* Центрирование текста по горизонтали */
+    font-weight: bold;
+}
+
+/* Ячейки заголовков (th) и обычные ячейки (td) */
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px; /* Внутренние отступы */
+    border: 1px solid #ddd; /* Одиночные линии */
+    vertical-align: middle; /* Вертикальное выравнивание */
+    text-align: center; /* Горизонтальное выравнивание */
+}
+
+/* Стиль для пустых ячеек */
+.styled-table td:empty {
+    background-color: #f2dede; /* Фон для пустых ячеек show по умолчанию*/
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f9f9f9; /* Цвет для четных строк */
+}
+
+.styled-table tbody tr:nth-of-type(odd) {
+    background-color: #f3f3f3; /* Цвет для нечетных строк */
+}
+
+/* Эффект наведения на четные строки */
+.styled-table tbody tr:nth-of-type(even):hover {
+    background-color: #c7e4fe; /* Голубой цвет при наведении на четные строки */
+}
+
+/* Эффект наведения на нечетные строки */
+.styled-table tbody tr:nth-of-type(odd):hover {
+    background-color: #bcdedb; /* Бирюзовый цвет при наведении на нечетные строки */
+}
+
+.styled-table tbody tr:first-child td {
+    background-color: #ffe0b2; /* Цвет фона для первой строки */
+    font-weight: bold; /* Жирный текст */
+}
+/* Стили для последнего ряда */
+.styled-table tbody tr:last-child td {
+    background-color: #ffe0b2; /* Цвет фона для последней строки */
+    text-decoration: underline; /* Подчеркнутый текст */
+}
+/* Нижняя граница последней строки */
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid rgb(23, 96, 96);
+}
+
+/* Стиль для сноски (объединенных ячеек) */
+.styled-table td[colspan="6"] {
+    /* background-color: #f9f9f9; */
+    font-style: italic;
+    color: #333;
+    text-align: center;
+}

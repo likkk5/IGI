@@ -1,0 +1,38 @@
+{% extends 'baseview.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/checkout.css' %}">
+</head>
+<body>
+<div class="order-container">
+    <h1 class="order-title">Оформление заказа</h1>
+
+    <h2 class="order-section-title">Ваши товары</h2>
+    <ul class="order-items">
+        {% for item in cart_items %}
+            <li class="order-item">
+                <h3>{{ item.product.name }}</h3>
+                <p>Цена: <strong>{{ item.product.price }} руб.</strong></p>
+                <p>Количество: <strong>{{ item.quantity }}</strong></p>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <p class="total-price">Общая стоимость: <span>{{ total_price }} руб.</span></p>
+
+    {% if promo_code %}
+        <h3 class="promo-code-applied">Применённый промокод: <strong>{{ promo_code }}</strong></h3>
+        <p class="discount">Скидка: <span>{{ discount }}</span></p>
+        <h3 class="final-price">Итоговая стоимость с учётом скидки: <strong>{{ discounted_price }} руб.</strong></h3>
+    {% else %}
+        <p class="promo-code-missing">Промокод не применён.</p>
+    {% endif %}
+
+    <form method="post" class="confirm-order-form">
+        {% csrf_token %}
+        <button type="submit" name="confirm_order" class="confirm-order-btn">Подтвердить заказ</button>
+    </form>
+</div>
+</body>
+{% endblock %}

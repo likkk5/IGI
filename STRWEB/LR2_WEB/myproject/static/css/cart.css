@@ -1,0 +1,156 @@
+/* Контейнер корзины */
+.cart-container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Заголовок */
+.cart-title {
+    text-align: center;
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* Список товаров */
+.cart-items {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.cart-item {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* Действия с товаром (обновление количества, удаление) */
+.cart-item-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 10px;
+}
+
+/* Обновление и удаление */
+.update-form, .remove-form {
+    display: inline;
+    margin-right: 10px;
+}
+
+.quantity-input {
+    width: 50px;
+}
+
+.update-btn, .remove-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+}
+
+.update-btn {
+    background-color: #007bff;
+}
+
+.remove-btn {
+    background-color: #dc3545;
+}
+
+/* Общая стоимость */
+.total-price {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.total-price span {
+    color: #007bff;
+}
+
+/* Промокод */
+.promo-form {
+    margin-top: 20px;
+}
+
+.promo-input {
+    padding: 5px;
+    width: 200px;
+}
+
+.apply-btn {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Промокоды */
+.promocodes-container {
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.promocodes-container h2, h3 {
+    text-align: center;
+    color: #0056b3;
+}
+
+.promo-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.promo-item {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.active-promo {
+    border: 1px solid #0056b3;
+    background-color: #e9f7ff;
+}
+
+.archived-promo {
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+}
+
+/* Сообщения */
+.no-promo {
+    color: #ff0000;
+}
+
+/* Кнопка оплаты */
+.checkout-button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.checkout-btn {
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.checkout-btn:hover {
+    background-color: #218838;
+}

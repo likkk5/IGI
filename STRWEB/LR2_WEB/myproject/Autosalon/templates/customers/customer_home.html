@@ -1,0 +1,26 @@
+{% extends 'baseview.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/customer_home.css' %}">
+</head>
+<body>
+  <h2 class="welcome-title">Добро пожаловать на страницу клиента!</h2>
+  <div class="button-container">
+    <a href="{% url 'view_catalog' %}" class="btn btn-primary">Товары</a>
+    <a href="{% url 'customer_orders' %}" class="btn btn-primary">Мои заказы</a>
+  </div>
+    
+  <form method="GET" action="{% url 'get_age' %}" class="age-form">
+    <label for="name" class="form-label">Ваше имя:</label>
+    <input type="text" name="name" id="name" class="input-field">
+    <button type="submit" class="submit-button">Получить возраст</button>
+  </form>
+
+  <form method="GET" action="{% url 'get_country' %}" class="country-form">
+    <label for="name_2" class="form-label">Ваше имя:</label>
+    <input type="text" name="name" id="name_2" class="input-field">
+    <button type="submit" class="submit-button">Получить национальность</button>
+  </form>
+</body>
+{% endblock %}

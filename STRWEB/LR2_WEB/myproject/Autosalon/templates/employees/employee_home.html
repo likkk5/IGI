@@ -1,0 +1,15 @@
+{% extends 'baseview.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/employee_home.css' %}">
+</head>
+<body>
+  <h2 class="welcome-message">Добро пожаловать на страницу сотрудников!</h2>
+  <div class="button-container">
+    <a href="{% url 'view_products' %}" class="btn btn-primary">Проверить все товары</a>
+    <a href="{% url 'view_manufacturers' %}" class="btn btn-primary">Проверить производителей</a>
+    <a href="{% url 'view_sales' %}" class="btn btn-primary">Просмотреть все продажи</a>
+  </div>
+</body>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% load static %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+</head>
+<body>
+  <div class="signup-container">
+    <h2 class="signup-title">Sign up for a free account</h2>
+    <p class="signup-description lead">Select below the type of account you want to create:</p>
+    
+    <div class="button-group">
+      <a href="{% url 'customer_signup' %}" class="account-button button-customer" role="button">I'm a customer</a>
+      <a href="{% url 'employee_signup' %}" class="account-button button-employee" role="button">I'm an employee</a>
+      <a href="{% url 'admin_signup' %}" class="account-button button-admin" role="button">I'm an admin</a>
+    </div>
+  </div>
+</body>
+{% endblock %}

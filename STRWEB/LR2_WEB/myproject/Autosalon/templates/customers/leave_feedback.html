@@ -1,0 +1,15 @@
+{% extends 'baseview.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/leave_feedback.css' %}">
+</head>
+<body>
+    <h2 class="feedback-title">Оставить отзыв</h2>
+    <form method="post" class="feedback-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="submit-button">Отправить отзыв</button>
+    </form>
+</body>
+{% endblock %}

@@ -1,0 +1,93 @@
+/* Общий контейнер */
+.container {
+    max-width: 600px; /* Максимальная ширина */
+    margin: 20px auto; /* Центрирование контейнера */
+    padding: 20px; /* Внутренние отступы */
+    border-radius: 10px; /* Скругление углов */
+    background-color: #f9f9f9; /* Цвет фона */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Тень */
+}
+
+/* Стили для заголовка */
+.welcome-title {
+    text-align: center; /* Центрирование заголовка */
+    color: #333; /* Цвет текста */
+    margin-bottom: 30px; /* Отступ снизу */
+}
+
+/* Контейнер для кнопок */
+.button-container {
+    display: flex; /* Flexbox для расположения кнопок */
+    justify-content: space-around; /* Равномерное распределение кнопок */
+    margin-bottom: 30px; /* Отступ снизу */
+}
+
+/* Общие стили для кнопок */
+.btn-primary {
+    display: inline-block; /* Чтобы кнопки можно было настраивать */
+    padding: 15px 30px; /* Увеличенные внутренние отступы */
+    color: white; /* Цвет текста */
+    background-color: #007bff; /* Синий фон */
+    border: none; /* Без границ */
+    border-radius: 5px; /* Скругление углов */
+    text-decoration: none; /* Убираем подчеркивание */
+    font-size: 18px; /* Увеличенный размер шрифта */
+    transition: background-color 0.3s ease; /* Плавный переход фона */
+    margin: 10px 0; /* Отступы сверху и снизу */
+    width: 100%; /* Занимаем всю ширину родительского элемента */
+    max-width: 300px; /* Максимальная ширина кнопки */
+    text-align: center; /* Центрирование текста в кнопке */
+}
+
+/* Эффект наведения для кнопок */
+.btn-primary:hover {
+    background-color: #0056b3; /* Цвет при наведении */
+}
+
+
+/* Контейнер для форм */
+.form-container {
+    display: flex; /* Flexbox для расположения форм */
+    flex-direction: column; /* Вертикальное расположение */
+    align-items: center; /* Центрирование элементов формы */
+}
+
+/* Стили для формы */
+.age-form, .country-form {
+    margin: 15px 0; /* Отступы сверху и снизу */
+    width: 100%; /* Занимаем всю ширину родительского элемента */
+}
+
+/* Стили для меток формы */
+.form-label {
+    margin-bottom: 5px; /* Отступ снизу */
+    font-size: 16px; /* Размер шрифта */
+    text-align: left; /* Выравнивание текста */
+    width: 100%; /* Занимаем всю ширину */
+}
+
+/* Стили для текстовых полей */
+.input-field {
+    padding: 10px; /* Внутренние отступы */
+    border: 1px solid #ccc; /* Серая граница */
+    border-radius: 5px; /* Скругление углов */
+    margin-top: 5px; /* Отступ сверху */
+    width: 100%; /* Занимаем всю ширину */
+}
+
+/* Стили для кнопок в формах */
+.submit-button {
+    padding: 10px 15px; /* Внутренние отступы */
+    background-color: #28a745; /* Зеленый фон */
+    color: white; /* Цвет текста */
+    border: none; /* Без границ */
+    border-radius: 5px; /* Скругление углов */
+    cursor: pointer; /* Курсор при наведении */
+    transition: background-color 0.3s ease; /* Плавный переход фона */
+    margin-top: 10px; /* Отступ сверху */
+}
+
+/* Эффект наведения для кнопок в формах */
+.submit-button:hover {
+    background-color: #218838; /* Цвет при наведении */
+}

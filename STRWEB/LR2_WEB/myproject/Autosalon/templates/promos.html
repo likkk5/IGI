@@ -1,0 +1,38 @@
+{% extends 'baseview.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/promos.css' %}">
+</head>
+<body>
+    <div class="promocodes-container">
+        <h1>Промокоды</h1>
+        
+        <h2 class="active-promo-title">Активные промокоды</h2>
+        {% if active_promo_codes %}
+            <ul class="promo-list">
+                {% for promo_code in active_promo_codes %}
+                    <li class="promo-item active">
+                        <strong>{{ promo_code.code }}</strong>: {{ promo_code.description }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="no-promo">Нет активных промокодов.</p>
+        {% endif %}
+
+        <h2 class="archived-promo-title">Архивные промокоды</h2>
+        {% if archived_promo_codes %}
+            <ul class="promo-list">
+                {% for promo_code in archived_promo_codes %}
+                    <li class="promo-item archived">
+                        <strong>{{ promo_code.code }}</strong>: {{ promo_code.description }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="no-promo">Нет архивных промокодов.</p>
+        {% endif %}
+    </div>
+</body>
+{% endblock %}

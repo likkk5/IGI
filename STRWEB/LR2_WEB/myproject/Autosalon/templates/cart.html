@@ -1,0 +1,88 @@
+{% extends 'baseview.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/cart.css' %}">
+</head>
+<body>
+<div class="cart-container">
+    <h1 class="cart-title">Корзина</h1>
+    <ul class="cart-items">
+        {% for item in cart_items %}
+            <li class="cart-item">
+                <div>
+                    <h3>{{ item.product.name }}</h3>
+                    <p>Цена: <strong>{{ item.product.price }} руб.</strong></p>
+                    <p>Количество: <strong>{{ item.quantity }}</strong></p>
+                </div>
+    
+                <div class="cart-item-actions">
+                    <form action="{% url 'update_cart_item' item.id %}" method="post" class="update-form">
+                        {% csrf_token %}
+                        <input type="number" name="quantity" value="{{ item.quantity }}" min="1" class="quantity-input"/>
+                        <button type="submit" class="update-btn">Обновить количество</button>
+                    </form>
+                    <form action="{% url 'remove_from_cart' item.product.id %}" method="post" class="remove-form">
+                        {% csrf_token %}
+                        <button type="submit" class="remove-btn">Удалить из корзины</button>
+                    </form>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+    
+    <p class="total-price">Общая стоимость: <span>{{ total_price }} руб.</span></p>
+
+    <form method="post" class="promo-form">
+        {% csrf_token %}
+        <input type="text" name="promo_code" placeholder="Введите промокод" required class="promo-input" />
+        <button type="submit" class="apply-btn">Применить</button>
+    </form>
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li class="{{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if discounted_price %}
+        <p class="discounted-price">Итоговая стоимость с учётом скидки: <span>{{ discounted_price }} руб.</span></p>
+    {% endif %}
+
+    <div class="promocodes-container">
+        <h2>Промокоды</h2>
+        <h3>Активные промокоды</h3>
+        {% if active_promo_codes %}
+            <ul class="promo-list">
+                {% for promo_code in active_promo_codes %}
+                    <li class="promo-item active-promo">
+                        <strong>{{ promo_code.code }}</strong>: {{ promo_code.description }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="no-promo">Нет активных промокодов.</p>
+        {% endif %}
+
+        <h3>Архивные промокоды</h3>
+        {% if archived_promo_codes %}
+            <ul class="promo-list">
+                {% for promo_code in archived_promo_codes %}
+                    <li class="promo-item archived-promo">
+                        <strong>{{ promo_code.code }}</strong>: {{ promo_code.description }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="no-promo">Нет архивных промокодов.</p>
+        {% endif %}
+    </div>
+
+    <p class="checkout-button">
+        <a href="{% url 'checkout' %}" class="checkout-btn">Оплатить</a>
+    </p>
+</div>
+</body>
+{% endblock %}

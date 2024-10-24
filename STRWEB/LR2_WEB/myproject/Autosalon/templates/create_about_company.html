@@ -1,0 +1,13 @@
+{% extends 'baseview.html' %}
+
+{% block content %}
+<div class="create_about-container">
+<h2>Добавить/Редактировать информацию о компании</h2>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}  <!-- Отображаем форму как параграфы (as_p) -->
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+</form>
+</div>
+{% endblock %}

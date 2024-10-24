@@ -1,0 +1,22 @@
+{% extends 'baseview.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/view_manufacturers.css' %}">
+</head>
+<body>
+  <h2 class="manufacturers-title">Наши производители</h2>
+  <ul class="manufacturers-list">
+    {% for manufacturer in manufacturers %}
+      <li class="manufacturer-item">
+        <h3 class="manufacturer-name">{{ manufacturer.name }}</h3>
+        <p><strong>Страна:</strong> {{ manufacturer.country }}</p>
+        <!-- <p><strong>Адрес:</strong> {{ manufacturer.address }}</p>
+        <p><strong>Телефон:</strong> {{ manufacturer.phone }}</p>
+        <p><strong>Email:</strong> {{ manufacturer.email }}</p> -->
+        <a href="{% url 'edit_manufacturer' manufacturer.id %}" class="btn btn-primary manufacturer-btn">Редактировать</a>
+      </li>
+    {% endfor %}
+  </ul>
+</body>
+{% endblock %}

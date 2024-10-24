@@ -1,0 +1,15 @@
+{% extends 'baseview.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+  <h2 class="homepage-title">Добро пожаловать на главную страницу проекта Django! <span class="icon-emo-happy"></span></h2>
+  
+  <div class="homepage-content">
+    <a href="{% url 'view_catalog' %}" class="btn btn-primary homepage-btn">Каталог товаров</a>
+  </div>
+</body>  
+{% endblock %}
+

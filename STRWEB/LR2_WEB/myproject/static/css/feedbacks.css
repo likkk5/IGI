@@ -1,0 +1,194 @@
+/* Основные стили для контейнера отзывов */
+body {
+    background-color: #f4f4f4; /* Фоновый цвет для страницы */
+}
+
+.feedbacks-container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.feedbacks-container h1 {
+    font-size: 28px;
+    color: #0056b3;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.leave-feedback-button {
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0056b3;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+/* Стили таблицы отзывов */
+.feedback-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    vertical-align: top;
+    border-radius: 5px;
+}
+
+.feedback-table .odd {
+    background-color: #f2f2f2;
+}
+
+.feedback-table .even {
+    background-color: #ffffff;
+}
+
+.feedback-table td:hover {
+    background-color: #e0f7fa;
+}
+
+/* Стили для динамических состояний ссылок */
+a:link {
+    color: #0056b3;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #551a8b;
+}
+
+/* наведен курсор */
+a:hover {
+    color: #ff6600;
+    text-decoration: underline;
+}
+
+/* в фокусе */
+a:focus {
+    outline: 2px dashed #ff6600;
+}
+/* нажата но не отпустиои курсор */
+a:active {
+    color: #ff0000;
+}
+
+/* Псевдоклассы для первого и последнего элемента */
+.feedback-table tr:first-child td {
+    border-top: 2px solid #0056b3;
+}
+
+.feedback-table tr:last-child td {
+    border-bottom: 2px solid #0056b3;
+}
+
+/* Форма отзывов */
+.feedback-form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.feedback-form input[type="text"],
+.feedback-form input[type="email"],
+.feedback-form textarea,
+.feedback-form input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+/* Обязательные элементы формы */
+.feedback-form .required {
+    border: 2px solid #ff0000; /* Красная рамка для обязательных полей */
+}
+
+/* Элементы с фокусом */
+.feedback-form input:focus,
+.feedback-form textarea:focus {
+    border-color: #0056b3;
+    outline: none;
+}
+
+/* Стили для заблокированных (disabled) и доступных элементов формы */
+.feedback-form input:disabled,
+.feedback-form textarea:disabled {
+    background-color: #e0e0e0;
+    color: #888;
+}
+
+.feedback-form input:enabled,
+.feedback-form textarea:enabled {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Стили для элементов с некорректными значениями (вне диапазона или обязательные) */
+.feedback-form input:invalid,
+.feedback-form input[type="number"]:out-of-range {
+    border-color: #ff0000; /* Красная рамка для недопустимых значений */
+}
+
+/* Стили для отмеченных флажков и переключателей */
+.feedback-form input[type="checkbox"]:checked + label,
+.feedback-form input[type="radio"]:checked + label{
+    color: #0056b3;
+    outline: 2px solid #ffcc00;
+}
+
+/* Доступные (enabled) и обязательные (required) элементы формы с атрибутами */
+.feedback-form input[required]:enabled {
+    border: 2px solid #ffcc00; /* Желтая рамка для обязательных полей */
+}
+
+/* Элементы формы с атрибутом placeholder, которые начинаются с подстроки */
+.feedback-form input[placeholder^="Введите"] {
+    border: 1px dashed #009688; /* Зелёная пунктирная рамка */
+}
+
+/* Элементы формы, атрибут value которых заканчивается на подстроку */
+.feedback-form input[value$="@example.com"] {
+    background-color: #ffebcc; /* Светло-оранжевый фон для определённых значений */
+}
+
+/* Объединение селекторов для активных и обязательных полей */
+.feedback-form input:enabled[required] {
+    background-color: #eaffea; /* Светло-зеленый фон для обязательных доступных полей */
+}
+
+/* Стиль для блоков с цитатами */
+blockquote {
+    font-size: 18px;
+    color: #555;
+    margin: 20px 0;
+    padding: 10px 15px;
+    border-left: 4px solid #0056b3; /* Левый бордер для цитаты */
+}
+
+/* Кавычки для английских цитат */
+blockquote[lang="en"] {
+    quotes: "“" "”" "‘" "’"; /* Определяем кавычки */
+}
+
+/* Кавычки для русских цитат */
+blockquote[lang="ru"] {
+    quotes: "«" "»" "„" "“"; /* Определяем кавычки */
+}
+
+/* Псевдоэлементы для отображения кавычек */
+blockquote::before {
+    content: open-quote; /* Открывающая кавычка */
+    font-size: 20px; /* Размер кавычки */
+    margin-right: 5px; /* Отступ справа */
+}
+
+blockquote::after {
+    content: close-quote; /* Закрывающая кавычка */
+    font-size: 20px; /* Размер кавычки */
+    margin-left: 5px; /* Отступ слева */
+}
+

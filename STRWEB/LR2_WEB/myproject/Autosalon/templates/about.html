@@ -1,0 +1,204 @@
+{% extends 'baseview.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+</head>
+<body>
+<div class="company-info">
+    <h2 class="company-title">О компании</h2>
+
+    <ul class="company-list">
+        {% for company in company_info %}
+        <li class="company-item">
+            <!-- <h3 class="company-name" id="company-{{ forloop.counter }}" title="Информация о компании {{ company.name }}">{{ company.name }}</h3> -->
+
+            <div class="company-content">
+                <div class="company-logo-section">
+                    <h4>Логотип</h4>
+                    {% if company.logo %}
+                        <a href="{{ company.website }}" target="_blank" title="Перейти на сайт {{ company.name }}">
+                            <img src="{{ company.logo.url }}" alt="{{ company.name }}" class="company-logo" loading="lazy">
+                        </a>                       
+                    {% else %}
+                        <p>Логотип недоступен.</p>
+                    {% endif %}
+                </div>
+                <div class="company-video-section">
+                    <h4>Наше Видео</h4>
+                    {% if company.video_file %}
+                        <video controls class="company-video">
+                            <source src="{{ company.video_file.url }}" type="video/mp4">
+                            Ваш браузер не поддерживает воспроизведение видео.
+                        </video>
+                    {% endif %}
+                    <iframe class="company-iframe" width="560" height="315" src="https://www.youtube-nocookie.com/embed/cqd4NinFyOk?si=j4J4ibs0G7ykhayv" title="YouTube video player"
+                            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+
+            {% if company.history %}
+                <!-- <h4 class="company-history-title">&#10148; История компании</h4>
+                <div class="company-history">{{ company.history|linebreaks|safe }}</div> -->
+                <h4 class="company-history-title">&#10148; История компании</h4>
+                <ul class="company-history">
+                    <li><strong>2005:</strong> Открытие первого автосалона LishykAutosalon в Минске.</li>
+                    <li><strong>2007:</strong> Начало партнерства с крупнейшими производителями автомобилей, такими как Toyota и Nissan.</li>
+                    <li><strong>2010:</strong> Расширение ассортимента автомобилей, открытие второго автосалона в Бресте.</li>
+                    <li><strong>2015:</strong> Введение услуг технического обслуживания и ремонта автомобилей.</li>
+                    <li><strong>2018:</strong> Открытие третьего салона в Гомеле и запуск онлайн-платформы для продажи автомобилей.</li>
+                    <li><strong>2021:</strong> Увеличение ассортимента за счет электромобилей и гибридных моделей.</li>
+                    <li><strong>2023:</strong> Получение статуса официального дилера брендов Audi и BMW.</li>
+                </ul>
+            {% endif %}
+
+            {% if company.details %}
+                <h4 class="company-details-title">&#10148; О компании</h4>
+                <p class="company-description"><strong><dfn>LishykAutosalon</dfn></strong> — это современный автосалон, предлагающий широкий выбор новых и подержанных автомобилей от ведущих мировых производителей.</p>
+                <p>Мы специализируемся на продаже:</p>
+                <ul class="company-specializations">
+                    <li>легковых автомобилей,</li>
+                    <li>кроссоверов,</li>
+                    <li>внедорожников.</li>
+                </ul>
+                <p>Наш автосалон также предоставляет качественное <strong>обслуживание</strong> и <strong>техническую поддержку</strong>, что делает нас надёжным партнёром для наших клиентов.</p>
+                <p><em>Наша миссия</em> — предложить каждому клиенту автомобиль, который <strong>соответствует его предпочтениям и бюджету</strong>.</p>
+                <p>Благодаря:</p>
+                <ol class="company-advantages">
+                    <li>долгосрочным партнёрствам с известными автопроизводителями,</li>
+                    <li>высококвалифицированным сотрудникам,</li>
+                </ol>
+                <p>мы гарантируем <strong>надёжность</strong> и <strong>безопасность каждой сделки</strong>.</p>
+                <dl class="company-terms">
+                    <p><strong>Термины:</strong></p>
+                    <dt>Автомобиль — </dt>
+                    <dd>Средство передвижения, обычно на четырех колесах, используемое для перевозки людей или грузов.</dd>
+                    <dt>Гарантия — </dt>
+                    <dd>Обязательство продавца предоставить бесплатный ремонт или замену товара в случае его неисправности в течение установленного срока.</dd>
+                </dl>
+                <dfn title="garant">Гарантия — </dfn> обязательство продавца предоставить бесплатный ремонт или замену товара в случае его неисправности в течение установленного срока.
+            {% endif %}
+
+            {% if company.requisites %}
+                <h4 class="company-requisites-title">&#10148; Реквизиты</h4>
+                <p class="company-requisites">
+                    <strong>Адрес:</strong> Республика Беларусь, г. Минск, проспект Независимости, XХX, офис 001<br>
+                    <strong>Телефон:</strong> +375 (29) 123-45-67<br>
+                    <strong>Электронная почта:</strong> <a href="mailto:info@lishykautosalon.by">info@lishykautosalon.by</a><br>
+                </p>
+                <p class="company-bank-details">
+                    <strong>Банковские реквизиты:</strong><br>
+                    Р/с № 30101810400000000225 в Минском филиале ОАО "Беларусбанк"<br>
+                    <strong>БИК:</strong> 1530012<br>
+                    <strong>Корреспондентский счет:</strong> № 30101810400000000225
+                </p>
+            {% endif %}
+
+            <!-- {% if company.certificate %}
+                <h4 class="company-certificate-title">&#10148; Сертификат</h4>
+                <p class="company-certificate-description">
+                    <strong>LishykAutosalon</strong> обладает официальным свидетельством, подтверждающим его членство в Ассоциации автосалонов, что гарантирует легальность и надежность нашей деятельности. 
+                    Мы соблюдаем все стандарты и требования, обеспечивая нашим клиентам высокое качество обслуживания и безопасность сделок.
+                </p>
+
+                <h5 class="company-registration-title">Свидетельство о регистрации</h5>
+                <p class="company-registration-details">
+                    <strong>ООО "LishykAutosalon"</strong><br>
+                    <strong>Регистрационный номер:</strong> 8241<br>
+                    <strong>Дата выдачи:</strong> 17 марта 2017 года<br>
+                    <strong>Выдано:</strong> Ассоциацией автосалонов "АВТОМОЩЬ"<br>
+                    <strong>Директор Ассоциации:</strong> И.В. Смирнов
+                </p>
+            {% endif %} -->
+            {% if company.certificate %}
+            <h4 class="certificate-head">&#10148; Сертификат</h4>
+            <div class="certificate-box">
+                <div class="certificate-container">
+                    <img src="/static/images/caricon.png" class="car-icon" alt="Car Icon">
+                    <!-- <img src="/static/images/qr-code.png" class="qr" alt="QR"> -->
+                    <h2 class="certificate-title">Единый реестр турагентов</h2>
+                    <hr class="certificate-divider"> <!-- Разделитель -->
+                    <h3 class="certificate-subtitle">Свидетельство о внесении сведений</h3>
+                    <div class="certificate-date">
+                        <span>Минск 17 марта 2024</span>
+                    </div>        
+                    <div class="certificate-content">
+                        <p class="company-name">
+                            Общество с ограниченной ответственностью <strong>"LishykAutosalon"</strong>
+                        </p>
+                        <p class="company-details">
+                            (ИНН 7731340252)
+                        </p>
+                        <p class="registry-number">
+                            <strong>Регистрационный номер:</strong> 8241
+                        </p>
+                        <p class="registry-description">
+                            Внесение в реестр подтверждено в соответствии с действующими нормативными актами. Организация подтверждает выполнение всех требований законодательства, установленных в области автомобильной торговли в Республике Беларусь.<br><br>
+                        </p>                        
+                        
+                    </div>                    
+        
+                    <hr class="certificate-divider"> <!-- Разделитель -->
+                    <div class="certificate-footer">
+                        <!-- Левая часть с контактной информацией -->
+                        <div class="footer-left">
+                            <p class="contact-info">
+                                Адрес: г. Минск, пр. Независимости, ХХХ<br>
+                                Телефон: +375 29 146-45-10<br>
+                                Email: info@lishykautosalon.by
+                            </p>
+                        </div>
+                    
+                        <!-- Центральная часть с дополнительной информацией -->
+                        <div class="footer-center">
+                            <p class="center-info">
+                                Ассоциация автосалонов "АВТОМОЩЬ"<br>
+                                Директор Ассоциации: <strong>И.В. Смирнов</strong><br>
+                                <em>Основано на регистрации в реестре</em>
+                            </p>
+                        </div>
+                    
+                        <!-- Правая часть с печатью и подписью -->
+                        <div class="footer-right">
+                            <div class="certificate-seal"></div>
+                            <div class="certificate-signature"></div>
+                        </div>
+                    </div>                                                          
+                </div>
+            </div>
+            {% endif %}    
+
+            <h4 class="company-banners-title">&#10148; Баннеры</h4>
+            <div class="company-banner-slideshow">
+                <div class="company-banner-slides">
+                    {% for banner in company.banners.all %}
+                    <div class="company-banner-slide">
+                        <a href="{% url 'index' %}" target="_blank" title="Перейти к баннеру {{ company.name }}">
+                            <img src="{{ banner.image.url }}" alt="{{ company.name }} Banner" class="company-banner" loading="lazy">
+                        </a>
+                    </div>
+                    {% empty %}
+                    <p><small>Нет доступных баннеров.</small></p>
+                    {% endfor %}
+                </div>
+
+                <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+                <a class="next" onclick="changeSlide(1)">&#10095;</a>
+                <!-- Пагинация -->
+                <div class="pagination"></div>
+                <div class="slide-indicator"></div> <!-- Индикатор слайдов (1/3) -->
+                </div>
+
+                <!-- Настройка времени задержки для автопрокрутки -->
+                <input type="number" id="delayInput" value="5" min="1" step="1">
+                <button onclick="setDelay()">Установить задержку</button>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+<script src="{% static 'js/slideshow.js' %}"></script>
+{% endblock %}
