@@ -1,0 +1,60 @@
+{% extends 'baseview.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/vacancies.css' %}">
+</head>
+<body>
+    <div class="vacancies-page-box">
+        <div class="vacancies-container">
+            <h1>Вакансии</h1>
+            <div class="vacancies-grid">
+                {% for vacancy in vacancies %}
+                    <div class="vacancy-item">
+                        <h2><u>{{ vacancy.title }}</u></h2>
+                        <p><strong>Описание:</strong> {{ vacancy.description }}</p>
+                        <p><strong>Зарплата:</strong> {{ vacancy.salary }}</p>
+                        <p><strong>Дата:</strong> {{ vacancy.date_posted }}</p>
+                        <p class="requirements">
+                            <strong>Требования:</strong> {{ vacancy.requirements }}
+                        </p>
+                        <p><strong>График:</strong> {{ vacancy.job_type }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        
+
+            <h2 class="table-heading">Сводная информация по вакансиям</h2> <!-- Заголовок над таблицей -->
+<table class="styled-table">
+    <thead>
+        <tr>
+            <th id="vacancy-title">Название вакансии</th>
+            <th id="vacancy-description">Описание</th>
+            <th id="vacancy-salary">Зарплата</th>
+            <th id="vacancy-date">Дата публикации</th>
+            <th id="vacancy-requirements">Требования</th>
+            <th id="vacancy-job-type">График</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for vacancy in vacancies %}
+        <tr>
+            <td headers="vacancy-title">{{ vacancy.title }}</td>
+            <td headers="vacancy-description">{{ vacancy.description }}</td>
+            <td headers="vacancy-salary">{{ vacancy.salary }}</td>
+            <!-- <td headers="vacancy-date">{{ vacancy.date_posted }}</td> -->
+            <td headers="vacancy-date"></td>
+            <td headers="vacancy-requirements">{{ vacancy.requirements }}</td>
+            <td headers="vacancy-job-type">{{ vacancy.job_type }}</td>
+        </tr>
+        <tr>
+            <td colspan="6" headers="vacancy-note">Примечание: Вакансия актуальна.</td> <!-- Объединение ячеек -->
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+        </div>
+    </div>
+</body>
+{% endblock %}

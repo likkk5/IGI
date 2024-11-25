@@ -1,0 +1,505 @@
+/* Основные стили для страницы "О компании" */
+body {
+    background-color: #f4f4f4; /* Фоновый цвет для страницы */
+}
+.company-info {
+    max-width: 1250px; /* Максимальная ширина контейнера */
+    margin: 20px auto; /* Центрирование контейнера */
+    padding: 20px; /* Отступы вокруг контейнера */
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.company-title {
+    font-size: 28px;
+    color: #0056b3;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.company-list {
+    list-style-type: none; /* Убираем маркеры списка */
+    padding: 0; /* Убираем отступы */
+}
+
+/* .company-item {
+    margin-bottom: 40px;
+    border: 1px solid #ddd;
+    border-radius: 10px; 
+    padding: 20px; 
+    background-color: #fff; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+} */
+
+.company-name {
+    margin-top: 0; /* Убираем верхний отступ */
+    font-size: 1.5em; /* Размер шрифта для заголовков компании */
+    color: #0056b3; /* Темный цвет для заголовков */
+}
+
+.company-content {
+    display: flex; /* Используем Flexbox для расположения элементов */
+    justify-content: space-between; /* Разделяем элементы по бокам */
+    align-items: flex-start; /* Выравнивание по верхнему краю */
+    margin-bottom: 20px; /* Отступ снизу */
+}
+
+.company-logo-section,
+.company-video-section {
+    width: 48%; /* Ширина секций логотипа и видео */
+    text-align: center; /* Центрируем текст внутри секций */
+}
+.company-logo:hover {
+    transform:scale(1.1) translateY(20px);
+}
+.company-logo {
+    max-width: 100%; /* Ограничение ширины для логотипа */
+    height: auto; /* Автоматическая высота для сохранения пропорций */
+    border-radius: 10px; /* Скругление углов для логотипа */
+    object-fit: cover; /* Логотип будет адаптироваться к контейнеру, сохраняя пропорции */
+    transition: transform 0.5s ease-in-out; /* Плавная анимация трансформации */
+}
+
+.company-video {
+    max-width: 100%; /* Ограничение ширины для видео */
+    height: auto; /* Автоматическая высота для сохранения пропорций */
+    border-radius: 10px; /* Скругление углов для видео */
+}
+
+.company-iframe {
+    max-width: 100%; /* Ограничение ширины для iframe */
+    height: auto; /* Автоматическая высота для сохранения пропорций */
+    border-radius: 10px; /* Скругление углов для iframe */
+}
+/* Стили для истории компании */
+.company-history-title {
+    font-size: 1.5em; /* Размер шрифта заголовка */
+    color: #0056b3; /* Цвет заголовка */
+    margin-top: 20px; /* Отступ сверху */
+    margin-bottom: 10px; /* Отступ снизу */
+    border-bottom: 2px solid #0056b3; /* Нижняя граница под заголовком */
+    padding-bottom: 5px; /* Отступ снизу заголовка */
+}
+/* Стили для списка */
+.company-history {
+    list-style-type: none; /* Убираем стандартные маркеры */
+    font-size: 1em; /* Размер шрифта для текста */
+    color: #333; /* Цвет текста */
+    line-height: 1.5; /* Междустрочный интервал */
+    margin-bottom: 20px; /* Отступ снизу */
+    padding-left: 0; /* Убираем отступ слева */
+}
+
+/* Стили для элементов списка */
+.company-history li {
+    margin-bottom: 13px; /* Отступ между пунктами списка */
+    padding: 10px;
+    background-color: #f4f4f4; /* Цвет фона каждого пункта */
+    border-left: 4px solid #0056b3; /* Цветная линия слева */
+    border-radius: 5px;
+}
+
+/* Жирный текст для года */
+.company-history li strong {
+    color: #007bff; /* Цвет для года */
+    font-size: 1.1em;
+}
+
+/* Стили для деталей компании */
+.company-details-title {
+    font-size: 1.5em; /* Размер шрифта заголовка */
+    color: #0056b3; /* Цвет заголовка */
+    margin-top: 20px; /* Отступ сверху */
+    margin-bottom: 10px; /* Отступ снизу */
+    border-bottom: 2px solid #0056b3; /* Нижняя граница под заголовком */
+    padding-bottom: 5px; /* Отступ снизу заголовка */
+}
+
+.company-description {
+    font-size: 1em; /* Размер шрифта для описания */
+    color: #333; /* Цвет текста */
+    line-height: 1.5; /* Междустрочный интервал */
+    margin-bottom: 15px; /* Отступ снизу */
+}
+
+.company-specializations,
+.company-advantages {
+    margin-left: 20px; /* Отступ слева для списков */
+}
+
+.company-terms {
+    margin: 20px 0; /* Отступы сверху и снизу для описания терминов */
+    background-color: #f9f9f9; /* Цвет фона для терминов */
+    border-left: 4px solid #0056b3; /* Левый бордер для выделения */
+    padding: 10px; /* Отступы внутри блока терминов */
+}
+
+/* Стили для реквизитов компании */
+.company-requisites-title {
+    font-size: 1.5em; /* Размер шрифта заголовка */
+    color: #0056b3; /* Цвет заголовка */
+    margin-top: 20px; /* Отступ сверху */
+    margin-bottom: 10px; /* Отступ снизу */
+    border-bottom: 2px solid #0056b3; /* Нижняя граница под заголовком */
+    padding-bottom: 5px; /* Отступ снизу заголовка */
+}
+
+.company-requisites {
+    font-size: 1em; /* Размер шрифта для реквизитов */
+    color: #333; /* Цвет текста */
+    line-height: 1.5; /* Междустрочный интервал */
+    margin-bottom: 20px; /* Отступ снизу */
+    background-color: #f9f9f9; /* Светлый фон для блока реквизитов */
+    padding: 15px; /* Внутренние отступы */
+    border-radius: 10px; /* Закругленные углы */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Легкая тень */
+}
+
+.requisite-item {
+    margin-bottom: 10px; /* Отступ между элементами */
+}
+
+.company-bank-details {
+    font-size: 1em; /* Размер шрифта для банковских реквизитов */
+    color: #333; /* Цвет текста */
+    line-height: 1.5; /* Междустрочный интервал */
+    margin-bottom: 20px; /* Отступ снизу */
+    background-color: #f9f9f9; /* Светлый фон для блока реквизитов */
+    padding: 15px; /* Внутренние отступы */
+    border-radius: 10px; /* Закругленные углы */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Легкая тень */
+}
+
+.bank-detail-item {
+    margin-bottom: 5px; /* Отступ между банковскими реквизитами */
+}
+.certificate-head {
+    font-size: 1.5em; /* Размер шрифта заголовка */
+    color: #0056b3; /* Цвет заголовка */
+    margin-top: 20px; /* Отступ сверху */
+    margin-bottom: 35px; /* Отступ снизу */
+    border-bottom: 2px solid #0056b3; /* Нижняя граница под заголовком */
+    padding-bottom: 5px; /* Отступ снизу заголовка */
+}
+/* border-image-source */
+.certificate-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    padding: 0;
+    background-color: #f0f0f0;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Для старых версий Safari вендрорные префиксы*/
+    -moz-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Для старых версий Firefox */
+    max-width: 1200px; 
+    position: relative;
+}
+
+.certificate-container {
+    width: 1200px;
+    height: 705px;
+    padding: 30px;
+    /* border: 10px double #0044cc; */
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    font-family: 'Times New Roman', serif;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: url('/static/images/certificate.jpg') no-repeat center center;
+    background-size: cover;
+    z-index: 0; /* Устанавливаем порядок наложения для контейнера */
+}
+
+.car-icon {
+    position: absolute; /* Используем абсолютное позиционирование */
+    bottom: 145px; /* Расположение снизу контейнера */
+    transform: translateX(-50%); /* Центрирование относительно самого изображения */
+    width: 600px; /* Ширина изображения */
+    height: auto; /* Сохранение пропорций */
+    z-index: 1; /* Установка порядка наложения выше фона */
+    opacity: 0.2; 
+}
+/* Псевдоэлемент для рамки */
+.certificate-container::before {
+    content: ''; /* Необходим для создания псевдоэлемента */
+    position: absolute;
+    top: -30px; /* Расстояние до верхней границы рамки */
+    left: -30px; /* Расстояние до левой границы рамки */
+    right: -30px; /* Расстояние до правой границы рамки */
+    bottom: -30px; /* Расстояние до нижней границы рамки */
+    background-size: cover; /* Масштабирование рамки */
+    border: 30px solid transparent; /* Прозрачная граница для растягивания изображения */
+    border-image: url('/static/images/frame.jpg') 30 stretch; /* Изображение рамки */
+    border-radius: inherit; /* Унаследуем закругленные углы от контейнера */
+    z-index: 2; /* Устанавливаем псевдоэлемент над основным содержимым */
+}
+.qr-code {
+    position: absolute; /* Используем абсолютное позиционирование */
+    top: 20px; /* Расположение сверху контейнера */
+    right: 20px; /* Расположение справа контейнера */
+    width: 10px; /* Ширина изображения */
+    opacity: 1;
+}
+
+/* Стиль для текста сертификата */
+.certificate-title, .certificate-subtitle, .certificate-content {
+    position: relative; /* Устанавливаем позицию текста для наложения */
+    z-index: 2; /* Установка порядка наложения выше изображения машины */
+}
+.certificate-title {
+    font-size: 32px;
+    font-weight: bold;
+    color: #0044cc;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.certificate-subtitle {
+    font-size: 24px;
+    color:#d51732;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+.subtitle-extra {
+    font-size: 18px;
+    display: block;
+    margin-top: 5px;
+}
+.certificate-date {
+    font-size: 18px;
+    margin-bottom: 40px;
+    color: #333;
+    font-style: italic;
+}
+/* .certificate-date-location {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    padding: 0 20px;
+    gap: 10px;
+}
+
+.certificate-city {
+    font-size: 18px;
+    color: #333;
+    font-style: italic;
+} */
+.certificate-content {
+    font-size: 18px; /* Уменьшенный основной размер текста */
+    line-height: 1.6;
+    margin-bottom: 40px;
+    text-align: left;
+    padding: 0 20px;
+    font-family: 'Times New Roman', serif;
+}
+
+/* Стиль для названия компании */
+.company-name {
+    font-size: 26px; /* Увеличенный размер шрифта для названия компании */
+    font-weight: bold;
+    text-align: center; /* Центровка названия компании */
+    margin-bottom: 10px;
+    color: black; /* Красный цвет, чтобы выделить название */
+}
+
+/* Стиль для ИНН */
+.company-details {
+    font-size: 20px;
+    text-align: center; /* Центровка текста с ИНН */
+    margin-bottom: 15px;
+    color: #333; /* Тёмно-серый цвет */
+}
+
+/* Стиль для регистрационного номера */
+.registry-number {
+    font-size: 22px;
+    text-align: center; /* Центровка регистрационного номера */
+    margin-bottom: 30px;
+    color: #0044cc; /* Синий цвет для выделения */
+    text-decoration-line: underline;
+}
+
+/* Описание внесения в реестр */
+.registry-description {
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: justify; /* Выравнивание по ширине для аккуратного текста */
+    color: #333;
+    margin-bottom: 20px;
+    max-width: 80%; /* Ограничиваем ширину в процентах от родительского контейнера */
+    margin: 0 auto; /* Центровка блока по горизонтали */
+}
+
+.certificate-footer {
+    display: flex;
+    justify-content: space-between; /* Разделяет контент на две стороны */
+    align-items: flex-start; /* Выравнивает по верху контейнера */
+    font-size: 18px;
+    color: #333;
+    margin-top: 40px;
+    padding: 0 20px;
+}
+
+.certificate-footer .footer-left {
+    text-align: left; /* Текст выравнен по левому краю */
+    flex: 1; /* Занимает одну часть пространства */
+    max-width: 40%; /* Ограничиваем ширину левой секции */
+    padding-right: 20px; /* Отступ справа для красивого отступа от центральной части */
+    font-size: 20px;
+}
+
+.certificate-footer .footer-center {
+    text-align: center; /* Выравнивание текста по центру */
+    flex: 1; /* Занимает одну часть пространства */
+    max-width: 30%; /* Ограничиваем ширину центральной секции */
+    margin-left: 30px;
+    padding-right: 20px;
+}
+
+.certificate-footer .footer-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Выравнивание по правому краю */
+    flex: 1; /* Занимает одну часть пространства */
+    max-width: 5%; /* Ограничиваем ширину правой секции */
+}
+
+.certificate-seal {
+    width: 130px;
+    height: 130px;
+    background: url('/static/images/seal_removeback.png') no-repeat center;
+    background-size: contain;
+    opacity: 0.8;
+    margin-bottom: 10px; /* Отступ между печатью и подписью */
+    margin-top: 30px;
+    position: relative;
+}
+
+.certificate-signature {
+    font-size: 16px;
+    font-style: italic;
+    color: #000;
+    font-weight: bold;
+    background: url('/static/images/signature_removeback.png') no-repeat center;
+    background-size: contain; /* Изображение будет адаптировано по размеру блока */
+    width: 200px; /* Ширина для изображения подписи */
+    height: 60px; /* Высота для изображения подписи */
+    text-align: center;
+    line-height: 60px; /* Вертикальное выравнивание текста по высоте блока */
+    margin-top: -50px; /* Поднимаем подпись на 20px, чтобы она затрагивала печать */
+    margin-right: 40px;
+    position: relative;
+}
+
+.company-banners-title {
+    font-size: 1.5em; /* Размер шрифта заголовка */
+    color: #0056b3; /* Цвет заголовка */
+    margin-top: 30px; /* Отступ сверху */
+    margin-bottom: 10px; /* Отступ снизу */
+    border-bottom: 2px solid #0056b3; /* Нижняя граница под заголовком */
+    padding-bottom: 5px; /* Отступ снизу заголовка */
+}
+
+.company-banner-slideshow {
+    position: relative;
+    max-width: 100%; /* Ширина слайдера */
+    margin: auto;
+    overflow: hidden; /* Скрывает элементы за пределами видимой области */
+}
+
+.company-banner-slides {
+    display: flex; /* Отображаем слайды в ряд */
+    transition: transform 0.5s ease-in-out; /* Анимация для плавного перехода */
+}
+
+.company-banner-slide {
+    min-width: 100%; /* Каждый слайд занимает 100% ширины контейнера */
+    box-sizing: border-box;
+    text-align: center; /* Выравниваем содержимое по центру */
+    position: relative;
+}
+
+.company-banner {
+    width: 100%; /* Баннерам задаем ширину 100% */
+    height: auto; /* Автоматическая высота в зависимости от пропорций изображения */
+    border-radius: 10px; /* Скругленные углы */
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.3s;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.prev {
+    left: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.next {
+    right: 0;
+    border-radius: 0 3px 3px 0;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8); /* Затемнение кнопок при наведении */
+}
+.pagination {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.pagination-button {
+    height: 15px;
+    width: 15px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.pagination-button.active {
+    background-color: #717171;
+}
+
+.slide-indicator {
+    position: absolute;
+    top: 10px;
+    left: 10px;  
+    font-size: 16px;
+    color: white; 
+    background-color: rgba(0, 0, 0, 0.5); 
+    padding: 5px 10px;  
+    border-radius: 5px; 
+}
+.slide-caption {
+    position: absolute;
+    bottom: 20px;         /* Расположить текст над нижним краем слайда */
+    left: 50%;
+    transform: translateX(-50%); /* Центрируем текст по горизонтали */
+    color: white;         /* Цвет текста */
+    background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон для улучшения читаемости */
+    padding: 10px 20px;   /* Отступы вокруг текста */
+    border-radius: 5px;   /* Скругленные углы для блока текста */
+    font-size: 18px;      /* Размер шрифта */
+    max-width: 80%;       /* Максимальная ширина подписи */
+    white-space: nowrap;  /* Обрезать текст, если он слишком длинный */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Добавить многоточие, если текст не помещается */
+}

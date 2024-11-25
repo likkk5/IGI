@@ -1,0 +1,30 @@
+{% extends 'baseview.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/contacts.css' %}">
+</head>
+<body>
+    <section class="contacts-container">
+        <h1>Контакты</h1>
+
+        <div class="contacts-grid">
+            {% for contact in employees %}
+            <div class="contact-card">
+                <h2>{{ contact.user.username }}</h2>
+                <div class="image-wrapper">
+                    {% if contact.photo %}
+                        <img src="{{ contact.photo.url }}" alt="{{ contact.user.username }}">
+                    {% else %}
+                        <img src="{% static 'images/default_photo.png' %}" alt="No photo">
+                    {% endif %}
+                    <a class="contact-email" href="mailto:{{ contact.email }}">{{ contact.email }}</a>
+                </div>
+                <p><strong>Телефон:</strong> {{ contact.phone_number }}</p>
+                <p class="contact-position"><strong>Должность:</strong> {{ contact.position }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+</body>
+{% endblock %}

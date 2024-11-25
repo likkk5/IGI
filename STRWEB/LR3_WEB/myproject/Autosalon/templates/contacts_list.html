@@ -1,0 +1,106 @@
+{% extends 'baseview.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/contacts_list.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'css/animation.css' %}"> -->
+</head>
+<body>
+    <!-- Прелоадер -->
+    <div id="preloader">
+        <div class="circle-container">
+            <div class="circle horizontal"></div>
+            <div class="circle vertical"></div>
+        </div>
+    </div>
+
+    <h1 class="contacts-header">Контакты сотрудников</h1>
+
+    <!-- Флажок для отображения панели настройки -->
+    <div class="style-toggle">
+        <label>
+            <input type="checkbox" id="styleCheckbox">
+            Показать настройки стиля
+        </label>
+    </div>
+    <!-- Контейнер для динамически создаваемой панели стилей -->
+    <div id="stylePanelContainer" class="style-panel"></div>
+    
+    <!-- Панель настройки стиля (скрыта по умолчанию) -->
+    <!-- <div id="stylePanel" class="style-panel" style="display:none;">
+        <label>Размер шрифта:
+            <input type="range" id="fontSizeSlider" min="10" max="30" value="16" onchange="changeFontSize()">
+        </label>
+        <label>Цвет текста:
+            <input type="color" id="textColorPicker" value="#333333" onchange="changeTextColor()">
+        </label>
+        <label>Цвет фона:
+            <input type="color" id="bgColorPicker" value="#ffffff" onchange="changeBackgroundColor()">
+        </label>
+    </div> -->
+
+    <div class="controls">
+        <button class="contacts-button" onclick="openAddForm()">Добавить сотрудника</button>
+        <input type="text" id="filterInput" class="filter-input" placeholder="Введите текст для фильтрации">
+        <button class="contacts-button" onclick="filterTable()">Найти</button>
+    </div>
+
+    <!-- Таблица с данными -->
+    <table id="contactsTable" class="contacts-table">
+        <thead>
+            <tr>
+                <th onclick="sortTable(0)">ФИО</th>
+                <th>Фото</th>
+                <th onclick="sortTable(2)">Должность</th>
+                <th onclick="sortTable(3)">Телефон</th>
+                <th onclick="sortTable(4)">Email</th>
+                <th>Премировать</th>
+            </tr>
+        </thead>
+        <tbody id="contactRows">
+            <!-- {% for contact in employees %}
+                <tr onclick="showDetails('{{ contact.user.username}}', '{{ contact.position }}', '{{ contact.phone_number }}', '{{ contact.email }}', '{{ contact.photo.url }}')">
+                    <td>{{ contact.user.username }}</td>
+                    <td><img src="{{ contact.photo.url }}" alt="Фото" width="50"></td>
+                    <td>{{ contact.position }}</td>
+                    <td>{{ contact.phone_number }}</td>
+                    <td>{{ contact.email }}</td>
+                    <td><input type="checkbox" name="premiere" value="{{ contact.user.username }}" onchange="awardBonus()"></td>
+                </tr>
+            {% endfor %} -->
+        </tbody>
+    </table>
+
+    <!-- Блок для вывода деталей выбранной строки -->
+    <div class="center-container">
+        <div id="detailsBlock" class="details-block"></div>
+    </div>
+
+    <!-- Пагинация -->
+    <!-- <div id="pagination" class="pagination"></div> -->
+    <div id="pagination" class="pagination">
+        <button id="prevButton" onclick="changePage(-1)">Предыдущая</button>
+        <button id="nextButton" onclick="changePage(1)">Следующая</button>
+    </div>
+    <!-- Форма добавления сотрудника -->
+    <div id="addForm" class="add-form" style="display:none;">
+        <h3>Добавить нового сотрудника</h3>
+        <form id="newEmployeeForm">
+            <input type="text" id="name" placeholder="ФИО" required>
+            <input type="text" id="position" placeholder="Должность" required>
+            <input type="text" id="phone" placeholder="Телефон" required>
+            <div id="phoneError" class="error-message"></div>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="url" id="photoUrl" placeholder="Фото URL" required>
+            <div id="urlError" class="error-message"></div>
+
+            <button type="button" class="contacts-button" id="addEmployeeButton" onclick="validateAndAdd()">Добавить</button>
+        </form>
+    </div>
+
+    <!-- Блок для вывода текста премирования -->
+    <div id="bonusMessage" class="bonus-message"></div>
+
+    <script src="{% static 'js/contacts.js' %}"></script>
+</body>
+{% endblock %}

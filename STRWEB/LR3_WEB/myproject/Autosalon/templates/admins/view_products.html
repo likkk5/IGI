@@ -1,0 +1,57 @@
+{% extends 'baseview.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/view_products.css' %}">
+</head>
+<body>
+  <div class="filter-container">
+    <form method="GET" action="{% url 'filter_products' %}" class="filter-form">
+        <div class="input-group">
+            <label for="min_price">Минимальная цена:</label>
+            <input type="number" name="min_price" id="min_price" class="input-field" placeholder="Введите минимальную цену">
+        </div>
+        <div class="input-group">
+            <label for="max_price">Максимальная цена:</label>
+            <input type="number" name="max_price" id="max_price" class="input-field" placeholder="Введите максимальную цену">
+        </div>
+        <button type="submit" class="filter-button">Фильтровать</button>
+    </form>
+
+    <h2 class="products-title">Список продуктов</h2>
+    
+    <div class="products-grid"> <!-- Изменение на div для сетки -->
+        {% for product in products %}
+            <div class="product-item">
+                <h3 class="product-name">{{ product.name }}</h3>
+                <p><strong>Код:</strong> {{ product.code }}</p>
+                <p><strong>Тип:</strong> {{ product.product_type }}</p>
+                <p><strong>Описание:</strong> {{ product.characteristics }}</p>
+                <p><strong>Цена:</strong> <span class="product-price">{{ product.price }}</span></p>
+                <img src="{{ product.photo.url }}" alt="{{ product.name }}" class="product-image">
+                <div class="button-group">
+                    {% if request.user.is_admin %}
+                        <div>
+                            <a href="{% url 'edit_product' product.id %}" class="btn btn-edit">Редактировать</a>
+                            <form action="{% url 'delete_product' product.id %}" method="post" class="delete-form">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-delete" onclick="return confirm('Вы уверены, что хотите удалить этот продукт?')">Удалить</button>
+                            </form>
+                        </div>
+                    {% elif request.user.is_customer %}
+                        <div class="buy-button-container"> 
+                            <!-- <a href="{% url 'buy_product' product.id %}" class="btn btn-buy">Купить</a> -->
+                            <a href="{% url 'add_to_cart' product.id %}" class="btn btn-buy">Добавить в корзину</a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        {% empty %}
+            <div class="no-products">Нет доступных продуктов.</div>
+        {% endfor %}
+    </div>
+    <div class="pagination"></div>
+</div>
+<script src="{% static 'js/catalog.js' %}"></script>
+</body>
+{% endblock %}

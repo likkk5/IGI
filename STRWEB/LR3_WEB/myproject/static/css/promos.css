@@ -1,0 +1,77 @@
+body {
+    background-color: #f4f4f4; /* Фоновый цвет для страницы */
+}
+
+.promocodes-container {
+    width: 80%;
+    margin: 20px auto; /* Отступ сверху и центрация */
+    padding: 20px;
+    border: 1px solid #ddd; /* Граница вокруг контейнера */
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.promocodes-container h1 {
+    font-size: 28px;
+    color: #0056b3;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.active-promo-title, .archived-promo-title {
+    color: #0056b3; /* Цвет заголовков секций */
+    border-bottom: 2px solid #0056b3; /* Линия под заголовком */
+    padding-bottom: 5px; /* Отступ снизу */
+    margin-top: 20px; /* Отступ сверху */
+}
+
+.promo-list {
+    list-style-type: none; /* Убираем маркеры списка */
+    padding-left: 0; /* Убираем отступ слева */
+}
+
+.promo-item {
+    margin-bottom: 10px; /* Отступ между элементами списка */
+    padding: 10px; /* Внутренние отступы */
+    border-radius: 5px; /* Закругленные углы */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Плавный переход фона и цвета при наведении */
+}
+
+/* Стиль для активных промокодов */
+.promo-item.active {
+    border: 1px solid #0056b3; /* Граница для активных промокодов */
+    background-color: #e9f7ff; /* Фоновый цвет для активных промокодов */
+}
+
+/* Эффект наведения для активных промокодов */
+.promo-item.active:hover {
+    background-color: #b3e0ff; /* Цвет фона при наведении на активный промокод */
+}
+
+/* Стиль для архивных промокодов */
+.promo-item.archived {
+    border: 1px solid #ccc; /* Граница для архивных промокодов */
+    background-color: #f9f9f9; /* Фоновый цвет для архивных промокодов */
+}
+
+/* Эффект наведения для архивных промокодов */
+.promo-item.archived:hover {
+    background-color: #cf8e8e; /* Темно-серый цвет фона при наведении на архивный промокод */
+    color:white; /* Цвет текста при наведении на архивный промокод */
+    transform: scale(1.01);
+}
+
+/* Изменяем цвет текста на более светлый для активных промокодов при наведении */
+.promo-item.active:hover {
+    color: #0056b3; /* Цвет текста при наведении на активный промокод */
+    transform: scale(1.01);
+}
+
+.no-promo {
+    color: #ff0000; /* Цвет для сообщений об отсутствии промокодов */
+    text-align: center; /* Центрируем текст */
+    margin-top: 10px; /* Отступ сверху */
+    font-size: 1.2em; /* Увеличиваем размер шрифта */
+    font-weight: bold; /* Делаем текст жирным */
+}

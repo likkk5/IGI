@@ -1,0 +1,122 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lishyk Autosalon - лучшие предложения по покупке автомобилей.">
+    <meta name="keywords" content="автосалон, автомобили, покупка, Lishyk, продажа, машины">
+    <meta name="author" content="Lishyk Autosalon">
+    <link rel="icon" href="{% static 'images/logo.jpg' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>Автосалон Lishyk - {% block title %}{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <!--  навигационная панель -->
+        <nav>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <!-- Логотип -->
+                <div class="logo">
+                    <a href="javascript:void(0)" onclick="openSidebar()">
+                        <img src="{% static 'images/logo.jpg' %}" alt="Lishyk Autosalon Logo" width="60">
+                    </a>
+                </div>
+                <!-- <div class="logo"></div>
+                    <a href="javascript:void(0)" onclick="openSidebar()">
+                        <img src="{% static 'images/logo.jpg' %}" alt="Lishyk Autosalon Logo" width="60">
+                    </a>
+                </div> -->
+                <div id="countdown" class="countdown"></div>
+                <!-- Ссылки навигации -->
+                <div class="navigation-links">
+                    <a href="{% url 'index' %}">Главная</a>
+                    <a href="{% url 'about' %}">О компании</a>
+                    <a href="{% url 'vacancies' %}">Вакансии</a>
+                    <a href="{% url 'contacts' %}">Контакты</a>
+                    <a href="{% url 'promos' %}">Промокоды</a>
+                    <a href="{% url 'feedbacks' %}">Отзывы</a>
+                    <a href="{% url 'policy' %}">Политика конфиденциальности</a>
+                    <a href="{% url 'news' %}">Новости</a>
+                    <a href="{% url 'questions' %}">Вопросы и ответы</a>
+                </div>
+
+                <!-- Кнопки входа/выхода -->
+                <div class="auth-buttons">
+                    {% if user.is_authenticated %}
+                        <span style="font-weight: bold; margin-right: 15px;">Logged in as {{ user.username }}</span>
+                        <form method="post" action="{% url 'logout' %}" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit">Logout</button>
+                        </form>
+                    {% else %}
+                        <a href="{% url 'login' %}">Log in</a>
+                        <a href="{% url 'signup' %}">Sign up</a>
+                    {% endif %}
+                </div>
+            <!-- Кнопка для открытия бокового меню -->
+            <!-- <div class="menu-toggle" onclick="openSidebar()"></div> -->
+
+            <!-- Боковое меню -->
+            <aside id="sidebar" class="sidebar">
+                <a href="javascript:void(0)" class="close-btn" onclick="closeSidebar()">&times;</a>
+                <ul class="sidebar-menu">
+                    <li><a href="{% url 'index' %}">Главная</a></li>
+                    <!-- <li><a href="{% url 'about' %}">О компании</a></li>
+                    <li><a href="{% url 'vacancies' %}">Вакансии</a></li>
+                    <li><a href="{% url 'contacts' %}">Контакты</a></li>
+                    <li><a href="{% url 'promos' %}">Промокоды</a></li>
+                    <li><a href="{% url 'feedbacks' %}">Отзывы</a></li>
+                    <li><a href="{% url 'policy' %}">Политика конфиденциальности</a></li>
+                    <li><a href="{% url 'news' %}">Новости</a></li>
+                    <li><a href="{% url 'questions' %}">Вопросы и ответы</a></li> -->
+                    <li><a href="{% url 'contacts_list' %}">Контакты</a></li>
+                    <li><a href="{% url 'students_list' %}">Ученики</a></li>
+                    <li><a href="{% url 'plot_arcsin' %}">График</a></li>
+                    {% if request.user.is_admin %}
+                        <li><a href="{% url 'admin_home' %}">Страница администратора</a></li>
+                        <li><a href="{% url 'view_statistics' %}">Статистика</a></li>  
+                    {% endif %}
+                    {% if request.user.is_customer %}
+                    <li><a href="{% url 'customer_home' %}">Страница пользователя</a></li>
+                    <li><a href="{% url 'customer_orders' %}">Ваши заказы</a></li>
+                    {% endif %}
+                    {% if request.user.is_employee %}
+                    <li><a href="{% url 'employee_home' %}">Страница сотрудника</a></li>
+                    {% endif %}
+                </ul>
+            </aside>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="footer">
+        <img src="{% static 'images/map2.jpg' %}" class="map" alt="map" width="60">
+        <section class="footer-info">
+            <div class="info-text">
+                <p>&copy; 2024 Lishyk Autosalon. Все права защищены.</p>
+                <p>Адрес: Республика Беларусь, г. Минск, проспект Независимости, XXX, офис 001</p>
+                <p>Email: info@lishykautosalon.com | Телефон: +375-29-146-45-10</p>
+            </div>
+            <img src="{% static 'images/qr-code.png' %}" alt="photo" class="info-photo" width="60">
+        </section>
+        
+    </footer>
+     <!-- Скрипт для открытия/закрытия меню -->
+     <script>
+        function openSidebar() {
+            document.getElementById("sidebar").style.width = "250px";
+        }
+
+        function closeSidebar() {
+            document.getElementById("sidebar").style.width = "0";
+        }
+    </script>
+    <script src="{% static 'js/countdown.js' %}"></script>
+</body>
+</html>

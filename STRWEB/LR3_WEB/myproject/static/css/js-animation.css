@@ -1,0 +1,34 @@
+.js-animation {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    /* justify-content: space-around; */
+    position: relative;
+    height: 70vh;
+    width: 100%;
+    background: url('/static/images/backgroundanimation.png') no-repeat center center;
+    background-size: cover;
+    border-radius: 5px;
+}
+
+.person {
+    height: auto;
+}
+
+.seller {
+
+    width: 220px;
+}
+
+.buyer {
+
+    width: 150px;
+}
+
+.car-front {
+    width: 370px;
+    height: auto;
+    align-self: flex-end;
+    transform: scale(0.5); /* Начальный размер (уменьшенный) */
+    transition: transform 0.3s ease, bottom 0.3s ease;
+}

@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Times+New+Roman&display=swap');
+/* Навигационная панель */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: lightblue;
+    padding: 15px;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-family: 'Times New Roman', Times, serif;
+}
+
+nav a {
+    color: rgb(23, 96, 96); 
+    text-decoration: none;
+    margin-right: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #0056b3 /* Эффект наведения */
+}
+
+.auth-buttons button, .auth-buttons a {
+    color: gray;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.auth-buttons button:hover, .auth-buttons a:hover {
+    color: #0056b3;
+}
+
+/* Основное содержание страницы */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    margin-top: 100px; /* Отступ для навигации */
+    flex: 1; /* Контент занимает оставшуюся высоту */
+    background-color: #f4f4f4; /* Фоновый цвет для страницы */
+}
+
+.wrapper {
+    flex: 1; /* Контейнер для контента */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Пример кнопки */
+button {
+    background-color: #0056b3;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Times New Roman', serif;
+}
+
+button:hover {
+    background-color: #004090;
+}
+
+/* Основной стиль для футера */
+.footer {
+    background-color: rgb(23, 96, 96);
+    padding: 20px;
+    margin-top: auto;
+    display: flex; /* Используем Flexbox для горизонтальной раскладки */
+    justify-content: center; /* Центрируем контент */
+    align-items: center; /* Вертикальное выравнивание по центру */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    color: #fff;
+}
+
+/* Изображение карты */
+.map {
+    margin-right: 20px; /* Отступ справа от карты */
+    width: 350px; /* Ширина изображения карты */
+    height: auto; /* Высота авто, чтобы сохранить пропорции */ 
+}
+
+/* Секция с информацией в футере */
+.footer-info {
+    display: flex; /* Используем Flexbox для горизонтальной раскладки фото и текста */
+    justify-content: space-between; /* Пространство между текстом и фото */
+    align-items: center; /* Вертикальное выравнивание по центру */
+    max-width: 1200px;
+    margin: 0 auto;
+    color: #fff;
+    font-size: 14px;
+    line-height: 1.6;
+    width: 100%; /* Делаем блок на всю ширину */
+}
+
+/* Текст по центру */
+.info-text {
+    text-align: left; /* Центрируем текст */
+    flex: 1; /* Текст занимает доступное пространство */
+}
+
+/* Фото справа от текста */
+.info-photo {
+    margin-left: 20px; /* Отступ слева от фото */
+    width: 120px; /* Ширина фото */
+    height: auto; /* Автоматическая высота для сохранения пропорций */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Тень для фото */
+}
+
+.footer-info p {
+    margin: 5px 0;
+}
+
+/* Стили для ссылок в футере */
+.footer-info a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.footer-info a:hover {
+    text-decoration: underline;
+}
+
+/* Для мобильных устройств */
+@media (max-width: 600px) {
+    .footer {
+        flex-direction: column; /* Меняем направление на колонку на маленьких экранах */
+        text-align: center;
+    }
+    
+    .footer img {
+        margin-bottom: 10px; /* Добавляем отступ под картой */
+    }
+
+    .footer-info {
+        text-align: center;
+    }
+}
+
+/* Кнопка для открытия бокового меню */
+/* .menu-toggle {
+    font-size: 30px;
+    cursor: pointer;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001; 
+} */
+
+/* Стиль для бокового меню */
+.sidebar {
+    height: 100%; /* Полная высота экрана */
+    width: 0; /* Начальное скрытое состояние */
+    position: fixed; /* Фиксированное положение */
+    top: 0;
+    left: 0;
+    background-color: rgb(23, 96, 96, 0.8); /* Темно-синий цвет с прозрачностью 90% */
+    overflow-x: hidden; /* Отключаем горизонтальную прокрутку */
+    transition: 0.5s; /* Плавное появление и скрытие */
+    padding-top: 60px; /* Отступ сверху, чтобы ссылки не прилипали к краю */
+    z-index: 1000; /* На переднем плане */
+}
+
+/* Ссылки в боковом меню */
+.sidebar-menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu li {
+    margin: 15px 0;
+}
+
+.sidebar-menu a {
+    padding: 10px 30px;
+    text-decoration: none;
+    font-size: 1.2em;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar-menu a:hover {
+    background-color: #6b7983; /* Цвет при наведении */
+    border-radius: 5px;
+    margin-left: 5px;
+}
+
+/* Кнопка закрытия бокового меню */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 36px;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Основной контент сдвигается при открытии меню */
+main {
+    transition: margin-left 0.5s;
+    padding: 20px;
+}
+
+@media (max-width: 768px) {
+    /* Для мобильных устройств уменьшаем ширину меню */
+    .sidebar {
+        width: 0;
+    }
+    .menu-toggle {
+        top: 15px;
+        left: 15px;
+        font-size: 28px;
+    }
+}
+.countdown {
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(23, 96, 96);
+    margin-left: 10px;
+}

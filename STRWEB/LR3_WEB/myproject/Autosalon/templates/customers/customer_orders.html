@@ -1,0 +1,19 @@
+{% extends 'baseview.html' %}
+
+{% block content %}
+<div style="width: 80%; margin: auto; margin-top: 20px; padding: 20px; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
+    <h2 style="text-align: center; color: #333;">Ваши Заказы</h2>
+    <ul style="list-style-type: none; padding-left: 0;">
+        {% for order in orders %}
+            <li style="margin-bottom: 15px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9;">
+                <p><strong>Продукт:</strong> {{ order.product.name }}</p>
+                <p><strong>Количество:</strong> {{ order.quantity }}</p>
+                <p><strong>Дата:</strong> {{ order.date_sold }}</p>
+                <p><strong>Цена:</strong> <span style="color: #007bff;">{{ order.price }} руб.</span></p>
+            </li>
+        {% empty %}
+            <li style="text-align: center; color: #ff0000;">Вы еще не сделали ни одного заказа.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

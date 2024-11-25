@@ -1,0 +1,39 @@
+{% extends 'baseview.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/admin_home.css' %}">
+</head>
+<body>
+  <h2 class="admin-title">Добро пожаловать на главную страницу администратора! <span class="icon-emo-happy"></span></h2>
+  <h4 class="admin-time">Текущее время: {{date|date:"d/m/Y"}} ({{timezone}})</h4>
+  
+  <div class="calendar-container">
+    {{ calendar|safe}}
+  </div>
+
+  <div class="admin-links">
+    <a href="{% url 'add_product' %}" class="btn btn-primary admin-btn">Добавить продукт</a>
+    <a href="{% url 'view_products' %}" class="btn btn-primary admin-btn">Просмотреть все продукты</a>
+    <a href="{% url 'add_manufacturer' %}" class="btn btn-primary admin-btn">Добавить производителя</a>
+    <a href="{% url 'view_manufacturers' %}" class="btn btn-primary admin-btn">Просмотреть производителей</a>
+    <a href="{% url 'search_product' %}" class="btn btn-primary admin-btn">Найти продукт</a>
+    <a href="{% url 'view_most_demand_product' %}" class="btn btn-primary admin-btn">Список продаж продуктов</a>
+    <a href="{% url 'view_sales' %}" class="btn btn-primary admin-btn">Просмотреть все продажи</a>
+    <a href="{% url 'view_employees' %}" class="btn btn-primary admin-btn">Просмотреть сотрудников</a>
+    <a href="{% url 'view_statistics' %}" class="btn btn-primary admin-btn">Просмотреть статистику</a>
+    <a href="{% url 'view_sales_by_month' %}" class="btn btn-primary admin-btn">Продажи по месяцам</a>
+    <a href="{% url 'view_annual_sales_report' %}" class="btn btn-primary admin-btn">Годовой отчет о продажах</a>
+    <a href="{% url 'customers_by_city' %}" class="btn btn-primary admin-btn">Клиенты по городам</a>
+  </div>
+     <!-- Контейнер для проверки возраста -->
+  <div class="age-check-container" id="ageForm">
+      <h3>Введите вашу дату рождения:</h3>
+      <div class="age-input-container"></div>
+        <input type="date" id="birthDate" required>
+        <button id="checkAgeButton" class="btn btn-primary admin-btn">Проверить возраст</button>
+    </div>
+  </div>
+  <script src="{% static 'js/home.js' %}"></script>
+</body>
+{% endblock %}

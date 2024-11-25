@@ -1,0 +1,102 @@
+body {
+    background-color: #f4f4f4; /* Фоновый цвет для страницы */
+}
+.contacts-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contacts-container h1 {
+    font-size: 28px;
+    color: #0056b3;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.contacts-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.contact-card {
+    background-color: #f0f8ff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.contact-card img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.contact-card h2 {
+    margin-bottom: 10px;
+    font-size: 1.5em;
+}
+
+.contact-card p {
+    margin: 5px 0;
+}
+
+.contact-position {
+    background-color: #cce5ff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.image-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.contact-email {
+    display: none; /* Скрываем ссылку по умолчанию */
+    position: absolute;
+    bottom: 10px; /* Смещаем ссылку вниз изображения */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+}
+
+.image-wrapper:hover .contact-email {
+    display: block; /* Показываем ссылку при наведении на изображение */
+}
+
+.contact-email:hover {
+    background-color: #0056b3; /* Изменение цвета при наведении на ссылку */
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .contact-card {
+        width: 100%;
+    }
+}

@@ -1,0 +1,20 @@
+{% extends 'baseview.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/plot_arcsin.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation"></script>
+</head>
+<body>
+    <h1 style="color: #0056b3;">Comparison of arcsin(x) Series and math.asin(x)</h1>
+    <canvas id="arcsinChart" width="500" height="300"></canvas>
+    <button id="saveBtn">Save Chart as PNG</button>
+    <!-- Встраивание JSON-данных с использованием application/json -->
+    <script id="xValues" type="application/json">{{ x_values|safe }}</script>
+    <script id="seriesValues" type="application/json">{{ series_values|safe }}</script>
+    <script id="mathValues" type="application/json">{{ math_values|safe }}</script>
+
+    <script src="{% static 'js/plot_arcsin.js' %}"></script>
+</body>
+{% endblock %}

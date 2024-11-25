@@ -1,0 +1,65 @@
+/* Стили для заголовка формы обратной связи */
+.feedback-title {
+    text-align: center; /* Центрирование заголовка */
+    margin-bottom: 20px; /* Отступ снизу */
+    color: #0056b3; /* Цвет текста */
+    font-size: 28px; /* Размер шрифта */
+    font-weight: 600; /* Жирный шрифт */
+    font-weight: bold;
+}
+
+/* Стили для формы обратной связи */
+.feedback-form {
+    max-width: 600px; /* Максимальная ширина формы */
+    margin: 20px auto; /* Центрирование формы */
+    padding: 20px; /* Внутренние отступы */
+    border-radius: 10px; /* Скругление углов */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Более выраженная тень */
+}
+
+/* Стили для поля ввода */
+.feedback-form input[type="text"],
+.feedback-form input[type="email"],
+.feedback-form textarea {
+    width: 99%; /* Ширина 100% */
+    padding: 10px; /* Внутренние отступы */
+    margin-bottom: 20px; /* Отступы снизу */
+    border: 1px solid #ddd; /* Граница */
+    border-radius: 5px; /* Скругление углов */
+    font-size: 16px; /* Размер шрифта */
+}
+
+/* Эффект при фокусе на полях ввода */
+.feedback-form input[type="text"]:focus,
+.feedback-form input[type="email"]:focus,
+.feedback-form textarea:focus {
+    border-color: #007bff; /* Синий цвет при фокусе */
+    outline: none; /* Убираем стандартный outline */
+}
+
+/* Стили для кнопки отправки отзыва */
+.submit-button {
+    padding: 10px 20px; /* Внутренние отступы */
+    color: white; /* Цвет текста */
+    background-color: #007bff; /* Синий фон */
+    border: none; /* Без границ */
+    border-radius: 5px; /* Скругление углов */
+    font-size: 18px; /* Размер шрифта */
+    cursor: pointer; /* Курсор в виде указателя */
+    display: block; /* Занимает всю ширину контейнера */
+    margin: 10px auto 0; /* Отступы сверху и снизу, центрирование */
+}
+
+/* Эффект наведения для кнопки */
+.submit-button:hover {
+    background-color: #0056b3; /* Цвет при наведении */
+    transform: translateY(-2px); /* Подъем кнопки при наведении */
+}
+
+/* Стили для текста ошибок (если применимо) */
+.error-message {
+    color: #dc3545; /* Красный цвет для ошибок */
+    margin-top: -15px; /* Отрицательный отступ для сближения с полем */
+    margin-bottom: 15px; /* Отступ снизу */
+    font-size: 14px; /* Размер шрифта */
+}

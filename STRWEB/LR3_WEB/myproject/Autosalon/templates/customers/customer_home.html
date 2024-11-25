@@ -1,0 +1,42 @@
+{% extends 'baseview.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/customer_home.css' %}">
+</head>
+<body>
+  <h2 class="welcome-title">Добро пожаловать на страницу клиента!</h2>
+  <div class="button-container">
+    <a href="{% url 'view_catalog' %}" class="btn btn-primary">Товары</a>
+    <a href="{% url 'customer_orders' %}" class="btn btn-primary">Мои заказы</a>
+  </div>
+    
+  <form method="GET" action="{% url 'get_age' %}" class="age-form">
+    <label for="name" class="form-label">Ваше имя:</label>
+    <input type="text" name="name" id="name" class="input-field">
+    <button type="submit" class="submit-button">Получить возраст</button>
+  </form>
+
+  <form method="GET" action="{% url 'get_country' %}" class="country-form">
+    <label for="name_2" class="form-label">Ваше имя:</label>
+    <input type="text" name="name" id="name_2" class="input-field">
+    <button type="submit" class="submit-button">Получить национальность</button>
+  </form>
+    <!-- Форма для получения возраста по дате рождения -->
+  <form id="ageForm" class="age-form">
+    <label for="birthDate" class="form-label">Введите вашу дату рождения:</label>
+    <input type="date" id="birthDate" class="input-field" required>
+    <button type="button" id="checkAgeButton" class="submit-button">Проверить возраст</button>
+  </form>
+    <!-- Модальное окно для запроса даты рождения -->
+  <!-- <div id="ageModal" class="modal">
+      <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Введите вашу дату рождения:</h2>
+          <input type="date" id="birthDate" required>
+          <button id="checkAgeButton" class="submit-button">Проверить возраст</button>
+      </div>
+  </div> -->
+  <script src="{% static 'js/home.js' %}"></script>
+</body>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'baseview.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/questions.css' %}">
+</head>
+<body>
+<div class="questions-container">
+    <h1>Вопросы и ответы</h1>
+    
+    {% for question in questions %}
+    <div class="question">
+        <details>
+            <summary>
+                {{ question.question }}
+            </summary>
+            <div class="answer">
+                <p><strong>Ответ:</strong> {{ question.answer }}</p>
+                <p>
+                    <strong>Дата:</strong> 
+                    <time datetime="{{ question.date_posted|date:'Y-m-d H:i:s' }}">
+                        {{ question.date_posted|date:"d F Y, H:i" }}
+                    </time>
+                </p>                
+            </div>
+        </details>
+        <hr>
+    </div>
+    {% endfor %}
+</div>
+</body>
+{% endblock %}

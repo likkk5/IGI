@@ -1,0 +1,26 @@
+{% extends 'baseview.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/news.css' %}">
+</head>
+<body>
+    <div class="news-page-container">
+        <h1 class="news-title">Новости</h1>
+
+        <div class="news-container">
+            {% for actu in news %}
+            <div class="news-item">
+                <img src="{{ actu.photo.url }}" alt="{{ actu.short_description }}" class="news-img">
+                <div class="news-content">
+                    <h2 class="news-heading">{{ actu.title }}</h2>
+                    <p class="news-short"><strong>Кратко:</strong> {{ actu.short_description }}</p>
+                    <p class="news-description">{{ actu.description}}</p>
+                    <a href="{% url 'news_detail' actu.id %}" class="read-more-btn">Читать далее</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+{% endblock %}

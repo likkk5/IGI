@@ -1,0 +1,16 @@
+{% extends 'baseview.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/news_detail.css' %}">
+</head>
+<body>
+<div class="news-detail-container">
+    <h1>{{ news_item.title }}</h1>
+    <img src="{{ news_item.photo.url }}" alt="{{ news_item.title }}">
+    <p>{{ news_item.description }}</p>
+    <a href="{% url 'news' %}">Назад к новостям</a>
+</div>
+</body>
+{% endblock %}
+

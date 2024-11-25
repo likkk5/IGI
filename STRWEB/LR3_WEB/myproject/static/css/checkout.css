@@ -1,0 +1,98 @@
+/* Контейнер оформления заказа */
+.order-container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Заголовок страницы */
+.order-title {
+    text-align: center;
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* Секция с товарами */
+.order-section-title {
+    color: #0056b3;
+    border-bottom: 2px solid #0056b3;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+.order-items {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.order-item {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* Цена и количество товара */
+.order-item h3 {
+    color: #333;
+}
+
+.order-item p strong {
+    color: #007bff;
+}
+
+/* Общая стоимость */
+.total-price {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.total-price span {
+    color: #007bff;
+}
+
+/* Промокод */
+.promo-code-applied {
+    color: #28a745;
+}
+
+.discount span {
+    color: #dc3545;
+}
+
+.final-price {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.promo-code-missing {
+    color: #ff0000;
+}
+
+/* Кнопка подтверждения заказа */
+.confirm-order-form {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.confirm-order-btn {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.confirm-order-btn:hover {
+    background-color: #218838;
+}

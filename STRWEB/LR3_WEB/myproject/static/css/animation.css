@@ -1,0 +1,750 @@
+/* Прелоадер */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    visibility: visible;
+    animation: hidePreloader 5s forwards;
+}
+
+.circle-container {
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+/* Цвета кругов и их стиль */
+.circle {
+    position: absolute;
+    width: 80px;
+    height: 80px; 
+    border-radius: 50%;
+    border-width: 6px; /* Увеличение толщины границы */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /*x y радиус размытия растяжение цвет*/
+}
+
+.horizontal {
+    background: linear-gradient(135deg, #053359, #0056b3); /* Темно-синий градиент */
+    border: 4px solid #00bfff; 
+    animation: rotateHorizontal 2s linear infinite; /* Более медленное вращение */
+}
+
+.vertical {
+    background: linear-gradient(135deg, #a0d3e8, #00bfff); /* Светло-голубой градиент */
+    border: 4px solid #0056b3; 
+    animation: rotateVertical 1.5s linear infinite; /* Обычное вращение */
+}
+
+/* Анимация вращения */
+@keyframes rotateHorizontal {
+    0% {
+        transform: rotateX(0deg);
+    }
+    100% {
+        transform: rotateX(360deg);
+    }
+}
+
+@keyframes rotateVertical {
+    0% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+/* Анимация исчезновения прелоадера */
+@keyframes hidePreloader {
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+/* Основной блок анимации автомобиля */
+#car-animation {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+/* Машина */
+.car {
+    position: absolute;
+    bottom: 60px;
+    left: -200px;
+    width: 200px;
+    height: 120px;
+    animation: driveCar 10s ease-in-out forwards; /*forward По окончанию анимации применяется стиль последнего ключевого кадра*/
+    animation-iteration-count:infinite;
+    z-index: 3;
+    animation-delay: 0.1s;
+}
+
+/* Кузов автомобиля */
+.body {
+    position: relative;
+    width: 100%;
+    height: 60px;
+    /* background-color: #333;
+    border-radius: 10px 10px 0 0; */
+    background: linear-gradient(to bottom, #444, #222); /* Градиент для кузова */
+    border-radius: 10px 10px 0 0; /* Закругление верхней части */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Тень под кузовом */
+    z-index: 2;
+}
+
+/* Крыша */
+.roof {
+    position: absolute;
+    top: -30px;
+    left: 45px;
+    width: 110px;
+    height: 100px;
+    background: linear-gradient(to bottom, #444, #222);
+    border-radius: 10px;
+    z-index: -1;
+}
+/* Лобовое стекло */
+.windshield {
+    position: absolute;
+    top: -15px; /* Положение лобового стекла */
+    left: 25px; /* Центрированная позиция */
+    width: 150px; /* Ширина лобового стекла */
+    height: 25px; /* Высота лобового стекла */
+    background: rgba(153, 204, 255, 0.9); /* Прозрачное лобовое стекло */
+    border-radius: 10px; /* Закругление верхних углов */
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); /* Внутренняя тень */
+}
+
+/* Дворники */
+.wiper {
+    position: absolute;
+    width: 15px; /* Ширина дворника */
+    height: 2px; /* Высота дворника */
+    background-color: #666; /* Цвет дворника */
+    z-index: 11;
+}
+
+.wiper-left {
+    top: -5px; /* Позиция левого дворника */
+    left: 155px; /* Сдвиг в правую сторону */
+    transform-origin: left center; /* Точка вращения */
+    transform: rotate(30deg); /* Поворот на 30 градусов */
+    animation: wiperMove 3s ease-in-out infinite;
+}
+
+.wiper-right {
+    top: -5px; /* Позиция правого дворника */
+    left: 155px; /* Сдвиг в правую сторону */
+    transform-origin: lest center; /* Точка вращения */
+    transform: rotate(30deg); /* Поворот на 30 градусов */
+    animation: wiperMoveReverse 3s ease-in-out infinite;
+}
+/* Анимация движения дворников */
+@keyframes wiperMove {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(-65deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+@keyframes wiperMoveReverse {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(-35deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+/* Окно */
+.window {
+    position: absolute;
+    top: -20px;
+    width: 40px;
+    height: 20px;
+    background: rgba(153, 204, 255, 0.7); /* Прозрачное окно */
+    border-radius: 5px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); /* Внутренняя тень */
+}
+
+.window-left {
+    left: 55px; /* Позиция левого окна */
+    animation: windowMoveUpDown 2s ease-in-out infinite 6s;
+}
+
+.window-right {
+    right: 55px; /* Позиция правого окна */
+    animation: windowMoveUpDown 4s ease-in-out infinite 2s;
+}
+/* Анимация для правого окна */
+@keyframes windowMoveUpDown {
+    0%, 100% {
+        height: 20px; /* Окно закрыто (начальная высота) */
+        top: -20px; /* Исходная позиция */
+    }
+    50% {
+        height: 5px; /* Окно почти полностью опущено */
+        top: 5px; /* Позиция окна ниже */
+        opacity: 0;
+    }
+}
+/* Дверь */
+.door {
+    position: absolute;
+    top: 15px;
+    width: 60px;
+    height: 40px;
+    background-color: #555;
+    border-radius: 5px; /* Закругление углов двери */
+    perspective: 1000px;
+}
+
+/* Левая дверь */
+.door-left {
+    left: 35px; /* Начальная позиция левой двери */
+    transform-origin: right bottom;
+    animation: openCloseDoorLeft 4s ease-in-out infinite 2s;
+}
+
+/* Правая дверь */
+.door-right {
+    right: 35px; /* Начальная позиция правой двери */
+    transform-origin: right bottom; 
+    animation: openCloseDoorRight 4s ease-in-out infinite 2s;
+}
+
+/* Анимация для левой двери */
+@keyframes openCloseDoorLeft {
+    0%, 100% {
+        transform: rotateY(0) translateY(0); /* Закрыто, без поворота */
+    }
+    25%, 75% {
+        transform: rotateY(-45deg) translateY(-10px); /* Открыто: поворот на 45 градусов к зрителю и небольшой подъем края */
+    }
+}
+
+/* Анимация для правой двери */
+@keyframes openCloseDoorRight {
+    0%, 100% {
+        transform: rotateY(0) translateY(0); /* Закрыто, без поворота */
+    }
+    25%, 75% {
+        transform: rotateY(45deg) translateY(-10px); /* Открыто: поворот на 45 градусов к зрителю и подъем края */
+    }
+}
+
+/* Ручки дверей */
+.handle {
+    position: absolute;
+    width: 20px;
+    height: 5px;
+    background-color: #ccc; /* Цвет ручки */
+    border-radius: 50%; /* Круглая форма ручки */
+}
+
+.handle-left {
+    left: 65px; /* Позиция левой ручки */
+    top: 25px; /* Положение сверху */
+}
+
+.handle-right {
+    right: 45px; /* Позиция правой ручки */
+    top: 25px; /* Положение сверху */
+}
+/* Багажник */
+/* .trunk {
+    position: absolute;
+    bottom: 10px;
+    left: 30%;
+    width: 90px;
+    height: 30px; 
+    background-color: #444;
+    border-radius: 5px;
+} */
+/* Бампер */
+.bumper {
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background-color: #111;
+    border-radius: 5px;
+}
+
+/* Колеса */
+.wheels {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 180px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.wheel {
+    width: 40px;
+    height: 40px;
+    background-color: black;
+    border-radius: 50%;
+    border: 2px solid #555;
+    animation: rotateWheels 1s linear infinite;
+    overflow: hidden; /* Чтобы полоски не выходили за границы колеса */
+}
+.wheel::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 4px;
+    background-color: #777; /* Цвет протектора */
+    transform: translate(-50%, -50%) rotate(45deg);
+    border-radius: 2px;
+}
+
+.wheel::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 4px;
+    background-color: #777; /* Цвет протектора */
+    transform: translate(-50%, -50%) rotate(-45deg);
+    border-radius: 2px;
+}
+/* Добавляем чёрный круг в центре шины */
+.center-cap-left {
+    position: absolute;
+    top: 50%;
+    right: 133px;
+    width: 15px;
+    height: 15px;
+    background-color: black; /* Чёрный круг */
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1; /* Поверх полосок */
+}
+.center-cap-right {
+    position: absolute;
+    top: 50%;
+    left: 148px;
+    width: 15px;
+    height: 15px;
+    background-color: black; /* Чёрный круг */
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1; /* Поверх полосок */
+}
+.wheel-left {
+    margin-left: 10px;
+}
+
+.wheel-right {
+    margin-right: 10px;
+}
+
+/* Брызги */
+.splash {
+    position: absolute;
+    bottom: 10px;
+    width: 20px;
+    height: 20px;
+    /* background-color: #00bfff; */
+    background-color: rgba(0, 153, 255, 0.8); /* Цвет брызг */
+    border-radius: 50%;
+    opacity:0;
+}
+
+.splash-left {
+    left: 10px;
+    animation: splashEffectLeft 2s forwards 2s;
+    animation-iteration-count:2;
+}
+
+.splash-right {
+    right: 10px;
+    animation: splashEffectRight 2s forwards 2s;
+    animation-iteration-count:2;
+}
+.splash3 {
+    left: 20px; /* Позиция третьей брызги */
+    animation: splashEffectLeft 2s forwards 2.4s;
+    animation-iteration-count:2;
+}
+
+.splash4 {
+    right: 20px; /* Позиция четвертой брызги */
+    animation: splashEffectRight 2s forwards 2.6s;
+    animation-iteration-count:2;
+}
+
+.splash5 {
+    left: 25px; /* Позиция пятой брызги */
+    animation: splashEffectLeft 2s forwards 2.8s;
+    animation-iteration-count:2;
+}
+
+/* Фары */
+.lights {
+    position: absolute;
+    top: 10px; /* Увеличено для поднятия фар над кузовом */
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.lights-left {
+    left: 15px; /* Позиция левой фары */
+    background-color: red;
+    animation: blinkBackLights 1s alternate infinite 2.5s;
+}
+
+.lights-right {
+    right: 15px; /* Позиция правой фары */
+    background-color: yellow;
+    animation: blinkLights 0.5s alternate infinite 9s;
+}
+.lights-right::before {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: 70px;
+    width: 140px;
+    height: 40px;
+    background: radial-gradient(
+        circle,
+        rgba(255, 255, 0, 0.7) 0%, /* Цвет в центре */
+        rgba(255, 255, 0, 0.5) 40%, /* Цвет на 40% расстояния */
+        rgba(255, 255, 0, 0.3) 80%, /* Цвет на 80% расстояния */
+        rgba(255, 255, 0, 0) 100% /* Прозрачный в конце */
+    );
+    clip-path: polygon(0 0, 100% 50%, 0 100%); /* Отзеркалили треугольник */
+    transform: translate(-50%, -50%) rotate(185deg);
+    z-index: -1;
+    opacity: 0.7;
+    animation: blinkLightBeam 0.5s alternate infinite 9s;
+}
+/* Анимация луча света */
+@keyframes blinkLightBeam {
+    0% {
+        opacity: 0.7; /* Свет включен */
+    }
+    100% {
+        opacity: 0; /* Свет выключен */
+    }
+}
+/* Задние фары */
+.tail-light {
+    position: absolute;
+    bottom: 10px; /* Положение задней фары */
+    width: 7px;
+    height: 5px;
+    border-radius: 50%;
+}
+
+.tail-light-left {
+    left: 5px; /* Позиция левой задней фары */
+    background-color: red;
+    animation: blinkBackLights 1s alternate infinite 2.5s;
+}
+
+.tail-light-right {
+    right: 5px; /* Позиция правой задней фары */
+    background-color: yellow;
+    animation: blinkLights 0.5s alternate infinite 9s;
+}
+
+/* Анимация выезда машины */
+@keyframes driveCar {
+    0% {
+        left: -200px; /* Начальная позиция */
+        transform: scaleX(1) rotate(0deg); /* Смотрит вправо */
+    }
+    50% {
+        left: 50%; /* Половина пути */
+        transform: scaleX(1) rotate(5deg); /* Небольшой наклон вправо */
+    }
+    75% {
+        left: 75%; /* Почти у цели */
+        transform: scaleX(1) rotate(-15deg); /* Небольшой наклон влево */
+    }
+    85% {
+        left: 85%; /* Позиция остаётся на месте для поворота */
+        transform: scaleX(1) rotate(0deg); /* Вернуться в горизонтальное положение */
+    }
+    90% {
+        left: 85%; /* Позиция остаётся на месте */
+        transform: scaleX(-1) rotate(0deg); /* Отзеркаливание на 180 градусов */
+    }
+    100% {
+        left: 85%; /* Конечная позиция */
+        transform: scaleX(-1) rotate(0deg); /* Продолжает смотреть влево */
+    }
+}
+
+/* Анимация вращения колес */
+@keyframes rotateWheels {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Анимация брызг слева */
+@keyframes splashEffectLeft {
+    0% {
+        opacity: 1;
+        transform: translate(-20px, 0) scale(0.5);
+    }
+    50% {
+        opacity: 0.5;
+        transform: translate(-50px, -20px) scale(1.2);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-80px, -30px) scale(0.8);
+    }
+}
+
+/* Анимация брызг справа */
+@keyframes splashEffectRight {
+    0% {
+        opacity: 1;
+        transform: translate(20px, 0) scale(0.5);
+    }
+    50% {
+        opacity: 0.5;
+        transform: translate(50px, -20px) scale(1.2);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(80px, -30px) scale(0.8);
+    }
+}
+
+/* Анимация мигания фар */
+@keyframes blinkLights {
+    0% {
+        background-color: yellow;
+    }
+    100% {
+        background-color: transparent;
+    }
+}
+/* Анимация мигания задних фар */
+@keyframes blinkBackLights {
+    0% {
+        background-color: red;
+    }
+    100% {
+        background-color: transparent;
+    }
+}
+/* Название компании */
+#car-animation h1.company-name{
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Times New Roman', Times, serif, sans-serif;
+    font-size: 48px;
+    color: #00d4ff;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    letter-spacing: 2px;
+    line-height: 1.2;
+    padding: 10px 20px;
+    border-radius: 10px;
+    opacity: 0;
+    background: linear-gradient(135deg, rgba(0, 0, 50, 0.5), rgba(0, 100, 150, 0.5)); /* Градиентный фон */
+    animation: fadeIn 10s forwards 3s, bgAnimation 8s infinite alternate; 
+    animation-iteration-count:infinite;
+    /* animation-delay: 1s; */
+}
+
+/* Анимация свечения */
+/* @keyframes glowEffect {
+    0% {
+        text-shadow: 0 0 10px rgb(59, 248, 223);
+    }
+    50% {
+        text-shadow: 0 0 20px rgb(174, 255, 185);
+    }
+    100% {
+        text-shadow: 0 0 10px rgba(255, 102, 237, 0.5);
+    }
+} */
+
+/* Анимация появления */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+    }
+}
+
+/* Анимация фона */
+@keyframes bgAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Лужа */
+.puddle {
+    position: absolute;
+    bottom: 40px;
+    left: 25%; /* Позиция лужи относительно автомобиля */
+    width: 450px; /* Ширина лужи */
+    height: 10px; /* Высота лужи */
+    background-color: rgba(0, 153, 255, 0.5); /* Цвет лужи */
+    border-radius: 20px; /* Закругление углов для лужи */
+    opacity: 0; /* Начальное состояние - невидимо */
+    animation: createPuddle 5s forwards; /* Анимация появления лужи */
+    animation-iteration-count:infinite;
+}
+
+/* Анимация появления лужи */
+@keyframes createPuddle {
+    0% {
+        opacity: 0; /* Лужа невидима в начале */
+        transform: scale(0); /* Уменьшена до 0 размера */
+    }
+    50% {
+        opacity: 1; /* Лужа становится видимой */
+        transform: scale(1); /* Увеличивается до полного размера */
+    }
+    100% {
+        opacity: 0.5; /* Полупрозрачная лужа в конце */
+    }
+}
+
+/* Небо */
+.sky {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Высота неба */
+    background-color: #87ceeb; /* Цвет неба */
+    z-index: -1; /* За травой и дорогой */
+}
+
+/* Облака */
+.cloud {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    z-index: 4; /* Облака поверх неба */
+}
+
+/* Позиционирование облаков */
+.cloud:nth-child(1) {
+    width: 80px;
+    height: 50px;
+    top: 50px;
+    left: 10%;
+}
+.cloud:nth-child(2) {
+    width: 100px;
+    height: 60px;
+    top: 40px;
+    left: 50%;
+}
+.cloud:nth-child(3) {
+    width: 70px;
+    height: 40px;
+    top: 60px;
+    left: 80%;
+}
+
+/* Дорога */
+.road {
+    position: absolute;
+    bottom: 50px; /* Устанавливаем дорогу немного выше */
+    left: 0;
+    width: 100%;
+    height: 80px; /* Высота дороги */
+    background-color: #666; /* Цвет дороги */
+    z-index: 1; /* Позиционирование под автомобилем */
+}
+
+/* Пунктирная линия */
+.dashed-line {
+    position: absolute;
+    top: 36px; /* Положение пунктирной линии */
+    left: 50%; /* Центрируем линию */
+    transform: translateX(-50%); /* Центрирование по горизонтали */
+    width: 100%; /* Ширина линии */
+    height: 4px; /* Высота линии */
+    background-color: transparent; /* Фон прозрачный */
+    border-top: 4px dashed white; /* Пунктирная линия */
+}
+
+
+/* Трава */
+.grass {
+    position: absolute;
+    bottom: 0; /* Трава на дне */
+    left: 0;
+    width: 100%;
+    height: 50px; /* Высота травы */
+    background-color: #3b7a57; /* Цвет травы */
+    z-index: 0; /* Трава ниже дороги */
+}
+
+/* Кустики */
+.bush {
+    position: absolute;
+    background-color: #4CAF50; /* Цвет кустиков */
+    border-radius: 50%;
+}
+
+/* Позиционирование кустиков */
+.bush:nth-child(1) {
+    width: 30px;
+    height: 30px;
+    bottom: 10px;
+    left: 10%;
+}
+
+.bush:nth-child(2) {
+    width: 25px;
+    height: 25px;
+    bottom: 10px;
+    left: 80%;
+}
+

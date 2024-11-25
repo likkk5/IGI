@@ -1,0 +1,64 @@
+/* Основной контейнер для страницы новости */
+.news-detail-container {
+    width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Заголовок новости */
+.news-detail-container h1 {
+    color: #333;
+    text-align: center;
+}
+
+/* Изображение новости */
+.news-detail-container img {
+    display: block;
+    margin: 20px auto;
+    width: 300px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Описание новости */
+.news-detail-container p {
+    line-height: 1.6;
+    color: #555;
+    column-count: 2; /* Количество колонок */
+    column-gap: 20px; /* Отступ между колонками */
+    text-align: justify;
+    column-rule: 1px solid #8f8e8e; /* Граница между колонками */
+    text-indent: 2em; /*Красная строка*/
+    overflow-wrap: break-word; /* Перенос длинных слов */
+    word-break: break-word;    /* Разрыв длинных слов */
+    hyphens: auto;             /* Автоматический перенос с дефисами */
+}
+/* Выделение первой буквы псевдоэлемент*/
+.news-detail-container p::first-letter {
+    font-size: 2em; /* Увеличенный размер */
+    font-weight: bold; /* Жирный шрифт */
+    color: #0056b3; /* Цвет выделенной буквы */
+    float: left;
+    margin-right: 2px;
+    line-height: 1; /* Сглаживание межстрочного расстояния */
+}
+/* Кнопка для возврата к списку новостей */
+.news-detail-container a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Стиль кнопки при наведении */
+.news-detail-container a:hover {
+    background-color: #0056b3;
+}
